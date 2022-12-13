@@ -1,2 +1,38 @@
-  [1m[35m (139.7ms)[0m  [1m[35mCREATE DATABASE "capstone_development" ENCODING = 'unicode'[0m
-  [1m[35m (52.5ms)[0m  [1m[35mCREATE DATABASE "capstone_test" ENCODING = 'unicode'[0m
+  [1m[35m (194.6ms)[0m  [1m[35mCREATE DATABASE "backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (69.6ms)[0m  [1m[35mCREATE DATABASE "backend_test" ENCODING = 'unicode'[0m
+Started POST "/hello_world" for ::1 at 2022-12-13 11:02:19 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/hello_world"):
+  
+Started GET "/hello_world" for ::1 at 2022-12-13 11:02:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/hello_world"):
+  
+Started GET "/hello" for ::1 at 2022-12-13 11:02:30 -0700
+Processing by ApplicationController#hello_world as */*
+  Parameters: {"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "application"=>{"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 37ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 20269)
+
+
+Started GET "/hello" for ::1 at 2022-12-13 11:02:32 -0700
+Processing by ApplicationController#hello_world as */*
+  Parameters: {"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "application"=>{"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 321)
+
+
+Started GET "/hello" for ::1 at 2022-12-13 11:02:33 -0700
+Processing by ApplicationController#hello_world as */*
+  Parameters: {"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "application"=>{"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 318)
+
+
+Started GET "/hello" for ::1 at 2022-12-13 11:02:33 -0700
+Processing by ApplicationController#hello_world as */*
+  Parameters: {"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "application"=>{"first_name"=>"Claire", "last_name"=>"Steinhoff", "username"=>"claire", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 309)
+
+
