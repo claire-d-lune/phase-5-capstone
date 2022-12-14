@@ -37,6 +37,9 @@ function App() {
 
   return (
     <div className="App">
+      
+      <div className="radial-progress" class="align-self-center" style={{"--value":70}}>70%</div>
+  
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -45,7 +48,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <div class="h-full bg-white">HELLO</div>
+      <h1 class="bg-blue">Vite + React</h1>
       <div className="card">
         <p>{infoStack}</p>
         <button onClick={() => setCount((count) => count + 1)}>
