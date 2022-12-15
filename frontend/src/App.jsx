@@ -1,44 +1,36 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
+import React  from 'react'
 import './index.css'
-import Counter from './Counter'
+import { Routes, Route } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+import Home from  './components/Home'
+import Leaderboard from './components/Leaderboard'
+import Login from './components/Login'
+import Signup from './components/Signup';
+import Navbar from './components/Navbar'
+import QuizPage from './components/QuizPage'
+import Seedmaker from './components/dev_components/Seedmaker'
 
 function App() {
-  const [questions, setQuestions] = useState()
-
-  useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=50&category=15&difficulty=easy&type=multiple")
-    .then(res => res.json())
-    .then(data => setQuestions(data))
-  }, []);
-
-  const formatQuestion = (object, counter) => {
-    return (
-      `vg_easy_${counter} = Question.create(category: "${object.category}", format: "${object.type}", question: "${object.question}", correct_answer: "${object.correct_answer}", difficulty: "${object.difficulty}", incorrect_answer_1: "${object.incorrect_answers[0]}", incorrect_answer_2: "${object.incorrect_answers[1]}", incorrect_answer_3: "${object.incorrect_answers[2]}")`
-      )
-  }
-
-
-  let myGoal
-  let infoStack 
-
-  if (questions !== undefined){
-    let counter = 0 
-    myGoal = questions.results.map( q => {
-    let response = formatQuestion(q, counter)
-    counter += 1
-    return response
-    })
-    infoStack = myGoal.map(element => <p>{element}</p>)
-  }
+  //Below I am creating an instance of client to be passed to child components using the provider -- just like context 
+  const client = new QueryClient();
 
   return (
-    <div>
-      <div class="radial-progress" style={{"--value":70}}>70%</div>
-      <Counter/>
-      {infoStack}
-    </div>
+    <QueryClientProvider client={client}>
+      <Navbar/>
+      <Routes>
+        <Route path = "/seedy" element={<Seedmaker/>}/>
+        <Route path = "/home" element={<></>}/>
+        <Route path = "/user" element = {<></>}/>
+        <Route path = "/quizpage/:id" element = {<></>}/>
+        <Route path = "/login" element ={<></>}/>
+        {/* <Route path =  element = {<></>}/>
+        <Route path =  element = {<></>}/>
+        <Route path =  element = {<></>}/>
+        <Route path =  element = {<></>}/>
+        <Route path =  element = {<></>}/> */}
+      </Routes>
+    </QueryClientProvider>
   )
 }
 
