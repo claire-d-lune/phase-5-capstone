@@ -9,6 +9,16 @@ class UsersController < ApplicationController
         render json: user, status: :ok
     end
 
+    ## Show current will return the current active user. 
+    def show_current
+        user = User.find_by(id: session[:user_id])
+        if user
+            render json: user, status: :ok
+        else
+            render json: {error: "no user is currently logged in"}
+        end
+    end
+
     def create
         user = User.create!(user_params)
         ## auto login ##
