@@ -4,7 +4,7 @@ const Leaderboard = () => {
 
 
     return(
-        <h1>Hello from Home</h1>
+        <h1>Hello from Leaderboard</h1>
     )
 }
 

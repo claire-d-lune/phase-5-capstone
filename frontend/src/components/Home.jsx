@@ -11,7 +11,6 @@ const Home = () => {
     const {data, isLoading, isError, refetch} = useQuery(["quizzes"], () => {
         return fetch("http://[::1]:4000/quizzes")
                .then(res => res.json())
-               .then(data => data)
     })
 
 
