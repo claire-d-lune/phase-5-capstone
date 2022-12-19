@@ -21,7 +21,7 @@ const Home = () => {
     console.log(data)
 
     return(
-        <div className="relative w-5/6 left-20">
+        <div className="relative w-3/4 left-28">
             <h1>Hello from Home</h1>
             {quizCards}
         </div>

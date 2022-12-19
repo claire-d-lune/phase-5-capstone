@@ -25,9 +25,10 @@ function App() {
         <Route path = "/my_profile" element = {<></>}/>
         <Route path = "/quizpage/:id" element = {<QuizPage/> }/>
         <Route path = "/login" element ={<Login/>}/>
+        <Route path = "/signup" element = {<Signup/>}/>
         <Route path = "/leaderboard" element={<Leaderboard/>}/>
         {/* <Route path =  element = {<></>}/>
-        <Route path =  element = {<></>}/>
+        
         <Route path =  element = {<></>}/>
         <Route path =  element = {<></>}/> */}
       </Routes>
