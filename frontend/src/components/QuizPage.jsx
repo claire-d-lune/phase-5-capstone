@@ -12,40 +12,21 @@ const QuizPage = () => {
 
     //Creating a card for each question:
     let questionNumber = 0
-    let questionStack = quizInfo?.questions.map(question => {
-        //ideally I wouldn't use ids for this since they are visible in developer tools, but I think it works for a quick solution.  
-        let choices = [
-            <option value="incorrect_1" id="incorrect_1">{question.incorrect_answer_1}</option>,
-            <option value="incorrect_2" id="incorrect_2">{question.incorrect_answer_2}</option>,
-            <option value="incorrect_3" id="incorrect_3">{question.incorrect_answer_3}</option>,
-            <option value="correct" id="correct">{ question.correct_answer}</option>
-        ]
+    let questionStack = quizInfo?.questions.map(q => {
+        //increment a counter for numbering
+        questionNumber += 1
+
+        //assign answers to array and use a shuffle so the correct choice is not predictable. 
+        let choices = [q.correct_answer, q.incorrect_answer_1, q.incorrect_answer_2, q.incorrect_answer_3]
 
         //shuffling the order of the the possible answers below:
         choices.sort((a, b) => 0.5 - Math.random())
-
-        // return     <div class="min-w-lg max-w-lg bg-[#8e94c1] rounded overflow-hidden shadow-lg my-5 py-2 ">
-        //                 <div class="px-6 py-4">
-        //                     <div class="font-bold text-xl mb-2">{question.question}</div>
-        //                 </div>
-        //                 <div>
-        //                             <label class="mb-3 block text-base font-medium text-[#0e0e19df]">Select an Answer: </label>
-        //                             <select id="category" defaultValue="DEFAULT" class="w-full resize-none rounded-md mb-3 border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-        //                                 <option value="DEFAULT" disabled hidden>select an answer</option>
-        //                                 {choices}
-        //                             </select>   
-        //                 </div>
-        //             </div>
-
-        questionNumber += 1
-
+   
         return <div className="card w-96 bg-neutral text-neutral-content my-4">
                     <div className="card-body items-center text-left pt-4">
-                    
                         <div className="divider my-2">{questionNumber}</div>
-                        <p>{question.category}</p>
-                        <h2 className="card-title">{`${question.question}`}</h2>
-                    
+                        <p>{q.category}</p>
+                        <h2 className="card-title">{`${q.question}`}</h2>
                     {/* <div className="form-control-radio card-actions justify-end">
                         <button className="btn btn-primary">Accept</button>
                         <button className="btn btn-ghost">Deny</button>
@@ -53,19 +34,19 @@ const QuizPage = () => {
                             <div className="form-control">
                             <label className="label cursor-pointer">
                                 <span className="label-text mr-3">{choices[0]}  </span> 
-                                <input type="radio"  name={`radio-${questionNumber}`} className="radio checked:bg-purple-500" unchecked />
+                                <input type="radio"  name={`radio-${questionNumber}`} className="radio checked:bg-purple-300" unchecked />
                             </label>
                             <label className="label cursor-pointer">
                                 <span className="label-text mr-3">{choices[1]}</span> 
-                                <input type="radio" name={`radio-${questionNumber}`} className="radio checked:bg-purple-500" unchecked />
+                                <input type="radio" name={`radio-${questionNumber}`} className="radio checked:bg-purple-300" unchecked />
                             </label>
                             <label className="label cursor-pointer">
                                 <span className="label-text mr-3">{choices[2]}</span> 
-                                <input type="radio"  name={`radio-${questionNumber}`} className="radio checked:bg-purple-500" unchecked />
+                                <input type="radio"  name={`radio-${questionNumber}`} className="radio checked:bg-purple-300" unchecked />
                             </label>
                             <label className="label cursor-pointer">
                                 <span className="label-text mr-3">{choices[3]}</span> 
-                                <input type="radio" name={`radio-${questionNumber}`} className="radio checked:bg-purple-500" unchecked />
+                                <input type="radio" name={`radio-${questionNumber}`} className="radio checked:bg-purple-300" unchecked />
                             </label>
                         </div>
                     </div>
