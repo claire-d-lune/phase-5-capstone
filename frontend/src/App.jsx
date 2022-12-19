@@ -19,13 +19,14 @@ function App() {
     <QueryClientProvider client={client}>
       <Navbar/>
       <Routes>
-        <Route path = "/" element={<Seedmaker/>}/>
+        <Route path = "/"  element = {<Home/>}/>
         <Route path = "/home" element={<Home/>}/>
-        <Route path = "/user" element = {<></>}/>
-        <Route path = "/quizpage/:id" element = {<></>}/>
-        <Route path = "/login" element ={<></>}/>
+        <Route path = "/seedy" element={<Seedmaker/>}/>
+        <Route path = "/my_profile" element = {<></>}/>
+        <Route path = "/quizpage/:id" element = {<QuizPage/> }/>
+        <Route path = "/login" element ={<Login/>}/>
+        <Route path = "/leaderboard" element={<Leaderboard/>}/>
         {/* <Route path =  element = {<></>}/>
-        <Route path =  element = {<></>}/>
         <Route path =  element = {<></>}/>
         <Route path =  element = {<></>}/>
         <Route path =  element = {<></>}/> */}
