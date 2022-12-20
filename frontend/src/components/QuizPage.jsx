@@ -6,6 +6,7 @@ import axios from "axios";
 const QuizPage = () => {
 
     const {id} = useParams()
+    
     const {data: quizInfo, isLoading, isError, refetch} = useQuery([`quiz${id}`], () => {
         return axios.get(`/api/quizzes/${id}`).then(res => res.data)
     });
@@ -21,7 +22,6 @@ const QuizPage = () => {
 
         //shuffling the order of the the possible answers below:
         choices.sort((a, b) => 0.5 - Math.random())
-   
         return <div className="card w-96 bg-neutral text-neutral-content my-4">
                     <div className="card-body items-center text-left pt-4">
                         <div className="divider my-2">{questionNumber}</div>
