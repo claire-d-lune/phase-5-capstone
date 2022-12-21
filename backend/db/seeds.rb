@@ -34,106 +34,7 @@ user2 = User.create(
 
 ## Film, difficulty: easy ##
 
-# [
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "What name did Tom Hanks give to his volleyball companion in the film `Cast Away`?",
-#       correct_answer: "Wilson",
-#       incorrect_answer_1: "Friday",
-#       incorrect_answer_2: "Jones",
-#       incorrect_answer_3: "Billy"
-      
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "Which actress danced the twist with John Travolta in &#039;Pulp Fiction&#039;?",
-#       correct_answer: "Uma Thurman",
-#       incorrect_answer_1: "Kathy Griffin", 
-#       incorrect_answer_2: "Pam Grier", 
-#       incorrect_answer_3: "Bridget Fonda"
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "This movie contains the quote, &quot;I feel the need ... the need for speed!&quot;",
-#       correct_answer: "Top Gun",
-#       incorrect_answer_1: "Days of Thunder",
-#       incorrect_answer_2: "The Color of Money",
-#       incorrect_answer_3: "Cocktail"
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "What is the orange and white bot&#039;s name in &quot;Star Wars: The Force Awakens&quot;?",
-#       correct_answer: "BB-8",
-#       incorrect_answer_1: "BB-3",
-#       incorrect_answer_2: "AA-A",
-#       incorrect_answer_3: "R2-D2"
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "Who is the main protagonist in, the 1985 film, Back to the Future?",
-#       correct_answer: "Marty McFly",
-#       incorrect_answer_1: "Emmett &quot;Doc&quot; Brown",
-#       incorrect_answer_2: "Biff Tannen",
-#       incorrect_answer_3: "George McFly"
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "In &quot;Jurassic World&quot;, what is the name of the dinosaur that is a genetic hybrid?",
-#       correct_answer: "Indominus Rex",
-#       incorrect_answer_1: 'Mosasaurus', 
-#       incorrect_answer_2: 'Pteranodon', 
-#       incorrect_answer_3: 'Tyrannosaurus Rex'
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "When does &quot;Rogue One: A Star Wars Story&quot; take place chronologically in the series?",
-#       correct_answer: "Between Episode 3 and 4",
-#       incorrect_answer_1: 'After Episode 6',
-#       incorrect_answer_2: 'Before Episode 1',
-#       incorrect_answer_3: 'Between Episode 4 and 5'
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "Who plays the character of Po in the Kung Fu Panda movies?",
-#       correct_answer: "Jack Black",
-#       incorrect_answer_1: 'Mirana Jonnes', incorrect_answer_2: 'McConahey Ramses', incorrect_answer_3: 'Jim Petersson'
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "In the movie &quot;Blade Runner&quot;, what is the term used for human-like androids ?",
-#       correct_answer: "Replicants",
-#       incorrect_answer_1: 'Cylons', incorrect_answer_2: 'Synthetics', incorrect_answer_3: 'Skinjobs'
-#     },
-#     {
-#       category: "Entertainment: Film",
-#       type: "multiple",
-#       difficulty: "easy",
-#       question: "In the 1995 film &quot;Balto&quot;, who are Steele&#039;s accomplices?",
-#       correct_answer: "Kaltag, Nikki, and Star",
-#       incorrect_answer_1: 'Dusty, Kirby, and Ralph', incorrect_answer_2: 'Nuk, Yak, and Sumac', incorrect_answer_3: 'Jenna, Sylvie, and Dixie'
-#     }
-#   ]
-
-
-## film::medium
+## Film::medium
   
 film_medium_1  = Question.create(category: "Film", format: "multiple", question: "Which of the following James Bond villains is not affiliated with the SPECTRE organization?", correct_answer: "Auric Goldfinger", difficulty: "medium", incorrect_answer_1: "Dr. Julius No", incorrect_answer_2: "Rosa Klebb", incorrect_answer_3: "Emilio Largo")
 film_medium_2  = Question.create(category: "Film", format: "multiple", question: "Who played Batman in the 1997 film &quot;Batman and Robin&quot;?", correct_answer: "George Clooney", difficulty: "medium", incorrect_answer_1: "Michael Keaton", incorrect_answer_2: "Val Kilmer", incorrect_answer_3: "Christian Bale")
@@ -524,3 +425,122 @@ history_hard_48 = Question.create(category: "History", format: "multiple", quest
 history_hard_49 = Question.create(category: "History", format: "multiple", question: "What is the name of the Boeing B-29 that dropped the &#039;Little Boy&#039; atomic bomb on Hiroshima?", correct_answer: "Enola Gay", difficulty: "hard", incorrect_answer_1: "Necessary Evil", incorrect_answer_2: "The Great Artiste", incorrect_answer_3: "Full House")
 
 # vq_quiz_easy1 = Quiz.create(category: "Video Games", title: "Enter the Bit-Bowl(easy)", author_id: user1.id)
+
+## Computing::Easy
+
+computers_easy_0 = Question.create(category: "Science: Computers", format: "multiple", question: "Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?", correct_answer: "Apple", difficulty: "easy", incorrect_answer_1: "Microsoft", incorrect_answer_2: "Atari", incorrect_answer_3: "Commodore")
+computers_easy_1 = Question.create(category: "Science: Computers", format: "multiple", question: "In any programming language, what is the most common way to iterate through an array?", correct_answer: "&#039;For&#039; loops", difficulty: "easy", incorrect_answer_1: "&#039;If&#039; Statements", incorrect_answer_2: "&#039;Do-while&#039; loops", incorrect_answer_3: "&#039;While&#039; loops")
+computers_easy_2 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the &quot;MP&quot; stand for in MP3?", correct_answer: "Moving Picture", difficulty: "easy", incorrect_answer_1: "Music Player", incorrect_answer_2: "Multi Pass", incorrect_answer_3: "Micro Point")
+computers_easy_3 = Question.create(category: "Science: Computers", format: "multiple", question: "According to the International System of Units, how many bytes are in a kilobyte of RAM?", correct_answer: "1000", difficulty: "easy", incorrect_answer_1: "512", incorrect_answer_2: "1024", incorrect_answer_3: "500")
+computers_easy_4 = Question.create(category: "Science: Computers", format: "multiple", question: "When Gmail first launched, how much storage did it provide for your email?", correct_answer: "1GB", difficulty: "easy", incorrect_answer_1: "512MB", incorrect_answer_2: "5GB", incorrect_answer_3: "Unlimited")
+computers_easy_5 = Question.create(category: "Science: Computers", format: "multiple", question: "What does GHz stand for?", correct_answer: "Gigahertz", difficulty: "easy", incorrect_answer_1: "Gigahotz", incorrect_answer_2: "Gigahetz", incorrect_answer_3: "Gigahatz")
+computers_easy_6 = Question.create(category: "Science: Computers", format: "multiple", question: "The programming language &#039;Swift&#039; was created to replace what other programming language?", correct_answer: "Objective-C", difficulty: "easy", incorrect_answer_1: "C#", incorrect_answer_2: "Ruby", incorrect_answer_3: "C++")
+computers_easy_7 = Question.create(category: "Science: Computers", format: "multiple", question: "HTML is what type of language?", correct_answer: "Markup Language", difficulty: "easy", incorrect_answer_1: "Macro Language", incorrect_answer_2: "Programming Language", incorrect_answer_3: "Scripting Language")
+computers_easy_8 = Question.create(category: "Science: Computers", format: "multiple", question: "What amount of bits commonly equals one byte?", correct_answer: "8", difficulty: "easy", incorrect_answer_1: "1", incorrect_answer_2: "2", incorrect_answer_3: "64")
+computers_easy_9 = Question.create(category: "Science: Computers", format: "multiple", question: "Which computer hardware device provides an interface for all other connected devices to communicate?", correct_answer: "Motherboard", difficulty: "easy", incorrect_answer_1: "Central Processing Unit", incorrect_answer_2: "Hard Disk Drive", incorrect_answer_3: "Random Access Memory")
+computers_easy_10 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the Prt Sc button do?", correct_answer: "Captures what&#039;s on the screen and copies it to your clipboard", difficulty: "easy", incorrect_answer_1: "Nothing", incorrect_answer_2: "Saves a .png file of what&#039;s on the screen in your screenshots folder in photos", incorrect_answer_3: "Closes all windows")
+computers_easy_11 = Question.create(category: "Science: Computers", format: "multiple", question: "The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:", correct_answer: "HD Graphics 500", difficulty: "easy", incorrect_answer_1: "HD Graphics 700 ", incorrect_answer_2: "HD Graphics 600", incorrect_answer_3: "HD Graphics 7000")
+computers_easy_12 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the most preferred image format used for logos in the Wikimedia database?", correct_answer: ".svg", difficulty: "easy", incorrect_answer_1: ".png", incorrect_answer_2: ".jpeg", incorrect_answer_3: ".gif")
+computers_easy_13 = Question.create(category: "Science: Computers", format: "multiple", question: "In web design, what does CSS stand for?", correct_answer: "Cascading Style Sheet", difficulty: "easy", incorrect_answer_1: "Counter Strike: Source", incorrect_answer_2: "Corrective Style Sheet", incorrect_answer_3: "Computer Style Sheet")
+computers_easy_14 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the code name for the mobile operating system Android 7.0?", correct_answer: "Nougat", difficulty: "easy", incorrect_answer_1: "Ice Cream Sandwich", incorrect_answer_2: "Jelly Bean", incorrect_answer_3: "Marshmallow")
+computers_easy_15 = Question.create(category: "Science: Computers", format: "multiple", question: "How many kilobytes in one gigabyte (in decimal)?", correct_answer: "1000000", difficulty: "easy", incorrect_answer_1: "1024", incorrect_answer_2: "1000", incorrect_answer_3: "1048576")
+computers_easy_16 = Question.create(category: "Science: Computers", format: "multiple", question: "On Twitter, what was the original character limit for a Tweet?", correct_answer: "140", difficulty: "easy", incorrect_answer_1: "120", incorrect_answer_2: "160", incorrect_answer_3: "100")
+computers_easy_17 = Question.create(category: "Science: Computers", format: "multiple", question: "In &quot;Hexadecimal&quot;, what color would be displayed from the color code? &quot;#00FF00&quot;?", correct_answer: "Green", difficulty: "easy", incorrect_answer_1: "Red", incorrect_answer_2: "Blue", incorrect_answer_3: "Yellow")
+computers_easy_18 = Question.create(category: "Science: Computers", format: "multiple", question: "Which computer language would you associate Django framework with?", correct_answer: "Python", difficulty: "easy", incorrect_answer_1: "C#", incorrect_answer_2: "C++", incorrect_answer_3: "Java")
+computers_easy_19 = Question.create(category: "Science: Computers", format: "multiple", question: "What does LTS stand for in the software market?", correct_answer: "Long Term Support", difficulty: "easy", incorrect_answer_1: "Long Taco Service", incorrect_answer_2: "Ludicrous Transfer Speed", incorrect_answer_3: "Ludicrous Turbo Speed")
+computers_easy_20 = Question.create(category: "Science: Computers", format: "multiple", question: "The numbering system with a radix of 16 is more commonly referred to as ", correct_answer: "Hexidecimal", difficulty: "easy", incorrect_answer_1: "Binary", incorrect_answer_2: "Duodecimal", incorrect_answer_3: "Octal")
+computers_easy_21 = Question.create(category: "Science: Computers", format: "multiple", question: "This mobile OS held the largest market share in 2012.", correct_answer: "iOS", difficulty: "easy", incorrect_answer_1: "Android", incorrect_answer_2: "BlackBerry", incorrect_answer_3: "Symbian")
+computers_easy_22 = Question.create(category: "Science: Computers", format: "multiple", question: "How many values can a single byte represent?", correct_answer: "256", difficulty: "easy", incorrect_answer_1: "8", incorrect_answer_2: "1", incorrect_answer_3: "1024")
+computers_easy_23 = Question.create(category: "Science: Computers", format: "multiple", question: "The C programming language was created by this American computer scientist. ", correct_answer: "Dennis Ritchie", difficulty: "easy", incorrect_answer_1: "Tim Berners Lee", incorrect_answer_2: "al-Khwārizmī", incorrect_answer_3: "Willis Ware")
+computers_easy_24 = Question.create(category: "Science: Computers", format: "multiple", question: "Which programming language shares its name with an island in Indonesia?", correct_answer: "Java", difficulty: "easy", incorrect_answer_1: "Python", incorrect_answer_2: "C", incorrect_answer_3: "Jakarta")
+computers_easy_25 = Question.create(category: "Science: Computers", format: "multiple", question: "How long is an IPv6 address?", correct_answer: "128 bits", difficulty: "easy", incorrect_answer_1: "32 bits", incorrect_answer_2: "64 bits", incorrect_answer_3: "128 bytes")
+computers_easy_26 = Question.create(category: "Science: Computers", format: "multiple", question: "In computing, what does MIDI stand for?", correct_answer: "Musical Instrument Digital Interface", difficulty: "easy", incorrect_answer_1: "Musical Interface of Digital Instruments", incorrect_answer_2: "Modular Interface of Digital Instruments", incorrect_answer_3: "Musical Instrument Data Interface")
+computers_easy_27 = Question.create(category: "Science: Computers", format: "multiple", question: "In computing, what does LAN stand for?", correct_answer: "Local Area Network", difficulty: "easy", incorrect_answer_1: "Long Antenna Node", incorrect_answer_2: "Light Access Node", incorrect_answer_3: "Land Address Navigation")
+computers_easy_28 = Question.create(category: "Science: Computers", format: "multiple", question: "What language does Node.js use?", correct_answer: "JavaScript", difficulty: "easy", incorrect_answer_1: "Java", incorrect_answer_2: "Java Source", incorrect_answer_3: "Joomla Source Code")
+computers_easy_29 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the computer software acronym JVM stand for?", correct_answer: "Java Virtual Machine", difficulty: "easy", incorrect_answer_1: "Java Vendor Machine", incorrect_answer_2: "Java Visual Machine", incorrect_answer_3: "Just Virtual Machine")\
+
+## Computing::Medium
+
+computers_medium_0 = Question.create(category: "Science: Computers", format: "multiple", question: "Which internet company began life as an online bookstore called &#039;Cadabra&#039;?", correct_answer: "Amazon", difficulty: "medium", incorrect_answer_1: "eBay", incorrect_answer_2: "Overstock", incorrect_answer_3: "Shopify")
+computers_medium_1 = Question.create(category: "Science: Computers", format: "multiple", question: "Whistler was the codename of this Microsoft Operating System.", correct_answer: "Windows XP", difficulty: "medium", incorrect_answer_1: "Windows 2000", incorrect_answer_2: "Windows 7", incorrect_answer_3: "Windows 95")
+computers_medium_2 = Question.create(category: "Science: Computers", format: "multiple", question: "Moore&#039;s law originally stated that the number of transistors on a microprocessor chip would double every...", correct_answer: "Year", difficulty: "medium", incorrect_answer_1: "Four Years", incorrect_answer_2: "Two Years", incorrect_answer_3: "Eight Years")
+computers_medium_3 = Question.create(category: "Science: Computers", format: "multiple", question: "What does AD stand for in relation to Windows Operating Systems? ", correct_answer: "Active Directory", difficulty: "medium", incorrect_answer_1: "Alternative Drive", incorrect_answer_2: "Automated Database", incorrect_answer_3: "Active Department")
+computers_medium_4 = Question.create(category: "Science: Computers", format: "multiple", question: "When was the programming language &quot;C#&quot; released?", correct_answer: "2000", difficulty: "medium", incorrect_answer_1: "1998", incorrect_answer_2: "1999", incorrect_answer_3: "2001")
+computers_medium_5 = Question.create(category: "Science: Computers", format: "multiple", question: "What five letter word is the motto of the IBM Computer company?", correct_answer: "Think", difficulty: "medium", incorrect_answer_1: "Click", incorrect_answer_2: "Logic", incorrect_answer_3: "Pixel")
+computers_medium_6 = Question.create(category: "Science: Computers", format: "multiple", question: "On which computer hardware device is the BIOS chip located?", correct_answer: "Motherboard", difficulty: "medium", incorrect_answer_1: "Hard Disk Drive", incorrect_answer_2: "Central Processing Unit", incorrect_answer_3: "Graphics Processing Unit")
+computers_medium_7 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of the following languages is used as a scripting language in the Unity 3D game engine?", correct_answer: "C#", difficulty: "medium", incorrect_answer_1: "Java", incorrect_answer_2: "C++", incorrect_answer_3: "Objective-C")
+computers_medium_8 = Question.create(category: "Science: Computers", format: "multiple", question: "All of the following programs are classified as raster graphics editors EXCEPT:", correct_answer: "Inkscape", difficulty: "medium", incorrect_answer_1: "Paint.NET", incorrect_answer_2: "GIMP", incorrect_answer_3: "Adobe Photoshop")
+computers_medium_9 = Question.create(category: "Science: Computers", format: "multiple", question: "The computer OEM manufacturer Clevo, known for its Sager notebook line, is based in which country?", correct_answer: "Taiwan", difficulty: "medium", incorrect_answer_1: "United States", incorrect_answer_2: "Germany", incorrect_answer_3: "China (People&#039;s Republic of)")
+computers_medium_10 = Question.create(category: "Science: Computers", format: "multiple", question: "Nvidia&#039;s headquarters are based in which Silicon Valley city?", correct_answer: "Santa Clara", difficulty: "medium", incorrect_answer_1: "Palo Alto", incorrect_answer_2: "Cupertino", incorrect_answer_3: "Mountain View")
+computers_medium_11 = Question.create(category: "Science: Computers", format: "multiple", question: "What did the name of the Tor Anonymity Network orignially stand for?", correct_answer: "The Onion Router", difficulty: "medium", incorrect_answer_1: "The Only Router", incorrect_answer_2: "The Orange Router", incorrect_answer_3: "The Ominous Router")
+computers_medium_12 = Question.create(category: "Science: Computers", format: "multiple", question: "What was the first commerically available computer processor?", correct_answer: "Intel 4004", difficulty: "medium", incorrect_answer_1: "Intel 486SX", incorrect_answer_2: "TMS 1000", incorrect_answer_3: "AMD AM386")
+computers_medium_13 = Question.create(category: "Science: Computers", format: "multiple", question: "What was the name given to Android 4.3?", correct_answer: "Jelly Bean", difficulty: "medium", incorrect_answer_1: "Lollipop", incorrect_answer_2: "Nutella", incorrect_answer_3: "Froyo")
+computers_medium_14 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these is the name for the failed key escrow device introduced by the National Security Agency in 1993?", correct_answer: "Clipper Chip", difficulty: "medium", incorrect_answer_1: "Enigma Machine", incorrect_answer_2: "Skipjack", incorrect_answer_3: "Nautilus")
+computers_medium_15 = Question.create(category: "Science: Computers", format: "multiple", question: "On which day did the World Wide Web go online?", correct_answer: "December 20, 1990", difficulty: "medium", incorrect_answer_1: "December 17, 1996", incorrect_answer_2: "November 12, 1990", incorrect_answer_3: "November 24, 1995")
+computers_medium_16 = Question.create(category: "Science: Computers", format: "multiple", question: "While Apple was formed in California, in which western state was Microsoft founded?", correct_answer: "New Mexico", difficulty: "medium", incorrect_answer_1: "Washington", incorrect_answer_2: "Colorado", incorrect_answer_3: "Arizona")
+computers_medium_17 = Question.create(category: "Science: Computers", format: "multiple", question: "Generally, which component of a computer draws the most power?", correct_answer: "Video Card", difficulty: "medium", incorrect_answer_1: "Hard Drive", incorrect_answer_2: "Processor", incorrect_answer_3: "Power Supply")
+computers_medium_18 = Question.create(category: "Science: Computers", format: "multiple", question: "How many cores does the Intel i7-6950X have?", correct_answer: "10", difficulty: "medium", incorrect_answer_1: "12", incorrect_answer_2: "8", incorrect_answer_3: "4")
+computers_medium_19 = Question.create(category: "Science: Computers", format: "multiple", question: "Which one of these is not an official development name for a Ubuntu release?", correct_answer: "Mystic Mansion", difficulty: "medium", incorrect_answer_1: "Trusty Tahr", incorrect_answer_2: "Utopic Unicorn", incorrect_answer_3: "Wily Werewolf")
+computers_medium_20 = Question.create(category: "Science: Computers", format: "multiple", question: "In the server hosting industry IaaS stands for...", correct_answer: "Infrastructure as a Service", difficulty: "medium", incorrect_answer_1: "Internet as a Service", incorrect_answer_2: "Internet and a Server", incorrect_answer_3: "Infrastructure as a Server")
+computers_medium_21 = Question.create(category: "Science: Computers", format: "multiple", question: "Which coding language was the #1 programming language in terms of usage on GitHub in 2015?", correct_answer: "JavaScript", difficulty: "medium", incorrect_answer_1: "C#", incorrect_answer_2: "Python", incorrect_answer_3: "PHP")
+computers_medium_22 = Question.create(category: "Science: Computers", format: "multiple", question: "In the programming language &quot;Python&quot;, which of these statements would display the string &quot;Hello World&quot; correctly?", correct_answer: "print(&quot;Hello World&quot;)", difficulty: "medium", incorrect_answer_1: "console.log(&quot;Hello World&quot;)", incorrect_answer_2: "echo &quot;Hello World&quot;", incorrect_answer_3: "printf(&quot;Hello World&quot;)")
+computers_medium_23 = Question.create(category: "Science: Computers", format: "multiple", question: "In HTML, which non-standard tag used to be be used to make elements scroll across the viewport?", correct_answer: "&lt;marquee&gt;&lt;/marquee&gt;", difficulty: "medium", incorrect_answer_1: "&lt;scroll&gt;&lt;/scroll&gt;", incorrect_answer_2: "&lt;move&gt;&lt;/move&gt;", incorrect_answer_3: "&lt;slide&gt;&lt;/slide&gt;")
+computers_medium_24 = Question.create(category: "Science: Computers", format: "multiple", question: "In CSS, which of these values CANNOT be used with the &quot;position&quot; property?", correct_answer: "center", difficulty: "medium", incorrect_answer_1: "static", incorrect_answer_2: "absolute", incorrect_answer_3: "relative")
+computers_medium_25 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?", correct_answer: "Heat Sink", difficulty: "medium", incorrect_answer_1: "CPU Vent", incorrect_answer_2: "Temperature Decipator", incorrect_answer_3: "Heat Vent")
+computers_medium_26 = Question.create(category: "Science: Computers", format: "multiple", question: "In programming, the ternary operator is mostly defined with what symbol(s)?", correct_answer: "?:", difficulty: "medium", incorrect_answer_1: "??", incorrect_answer_2: "if then", incorrect_answer_3: "?")
+computers_medium_27 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these programming languages is a low-level language?", correct_answer: "Assembly", difficulty: "medium", incorrect_answer_1: "Python", incorrect_answer_2: "C#", incorrect_answer_3: "Pascal")
+computers_medium_28 = Question.create(category: "Science: Computers", format: "multiple", question: "In computing terms, typically what does CLI stand for?", correct_answer: "Command Line Interface", difficulty: "medium", incorrect_answer_1: "Common Language Input", incorrect_answer_2: "Control Line Interface", incorrect_answer_3: "Common Language Interface")
+computers_medium_29 = Question.create(category: "Science: Computers", format: "multiple", question: "How fast is USB 3.1 Gen 2 theoretically?", correct_answer: "10 Gb/s", difficulty: "medium", incorrect_answer_1: "5 Gb/s", incorrect_answer_2: "8 Gb/s", incorrect_answer_3: "1 Gb/s")
+computers_medium_30 = Question.create(category: "Science: Computers", format: "multiple", question: "What does &quot;LCD&quot; stand for?", correct_answer: "Liquid Crystal Display", difficulty: "medium", incorrect_answer_1: "Language Control Design", incorrect_answer_2: "Last Common Difference", incorrect_answer_3: "Long Continuous Design")
+computers_medium_31 = Question.create(category: "Science: Computers", format: "multiple", question: "Which operating system was released first?", correct_answer: "Mac OS", difficulty: "medium", incorrect_answer_1: "Windows", incorrect_answer_2: "Linux", incorrect_answer_3: "OS/2")
+computers_medium_32 = Question.create(category: "Science: Computers", format: "multiple", question: ".rs is the top-level domain for what country?", correct_answer: "Serbia", difficulty: "medium", incorrect_answer_1: "Romania", incorrect_answer_2: "Russia", incorrect_answer_3: "Rwanda")
+computers_medium_33 = Question.create(category: "Science: Computers", format: "multiple", question: ".at is the top-level domain for what country?", correct_answer: "Austria", difficulty: "medium", incorrect_answer_1: "Argentina", incorrect_answer_2: "Australia", incorrect_answer_3: "Angola")
+computers_medium_34 = Question.create(category: "Science: Computers", format: "multiple", question: "What is known as &quot;the brain&quot; of the Computer?", correct_answer: "Central Processing Unit", difficulty: "medium", incorrect_answer_1: "Motherboard", incorrect_answer_2: "Graphics Processing Unit", incorrect_answer_3: "Keyboard")
+computers_medium_35 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the term GPU stand for?", correct_answer: "Graphics Processing Unit", difficulty: "medium", incorrect_answer_1: "Gaming Processor Unit", incorrect_answer_2: "Graphite Producing Unit", incorrect_answer_3: "Graphical Proprietary Unit")
+computers_medium_36 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the main CPU is the Sega Mega Drive / Sega Genesis?", correct_answer: "Motorola 68000", difficulty: "medium", incorrect_answer_1: "Zilog Z80", incorrect_answer_2: "Yamaha YM2612", incorrect_answer_3: "Intel 8088")
+computers_medium_37 = Question.create(category: "Science: Computers", format: "multiple", question: "When did the online streaming service &quot;Mixer&quot; launch?", correct_answer: "2016", difficulty: "medium", incorrect_answer_1: "2013", incorrect_answer_2: "2009", incorrect_answer_3: "2011")
+computers_medium_38 = Question.create(category: "Science: Computers", format: "multiple", question: "Laserjet and inkjet printers are both examples of what type of printer?", correct_answer: "Non-impact printer", difficulty: "medium", incorrect_answer_1: "Impact printer", incorrect_answer_2: "Daisywheel printer", incorrect_answer_3: "Dot matrix printer")
+computers_medium_39 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the term MIME stand for, in regards to computing?", correct_answer: "Multipurpose Internet Mail Extensions", difficulty: "medium", incorrect_answer_1: "Mail Internet Mail Exchange", incorrect_answer_2: "Multipurpose Interleave Mail Exchange", incorrect_answer_3: "Mail Interleave Method Exchange")
+computers_medium_40 = Question.create(category: "Science: Computers", format: "multiple", question: "Which programming language was developed by Sun Microsystems in 1995?", correct_answer: "Java", difficulty: "medium", incorrect_answer_1: "Python", incorrect_answer_2: "Solaris OS", incorrect_answer_3: "C++")
+computers_medium_41 = Question.create(category: "Science: Computers", format: "multiple", question: "The name of technology company HP stands for what?", correct_answer: "Hewlett-Packard", difficulty: "medium", incorrect_answer_1: "Howard Packmann", incorrect_answer_2: "Husker-Pollosk", incorrect_answer_3: "Hellman-Pohl")
+computers_medium_42 = Question.create(category: "Science: Computers", format: "multiple", question: "Approximately how many Apple I personal computers were created?", correct_answer: "200", difficulty: "medium", incorrect_answer_1: "100", incorrect_answer_2: "500", incorrect_answer_3: "1000")
+computers_medium_43 = Question.create(category: "Science: Computers", format: "multiple", question: "In programming, what do you call functions with the same name but different implementations?", correct_answer: "Overloading", difficulty: "medium", incorrect_answer_1: "Overriding", incorrect_answer_2: "Abstracting", incorrect_answer_3: "Inheriting")
+computers_medium_44 = Question.create(category: "Science: Computers", format: "multiple", question: "What does RAID stand for?", correct_answer: "Redundant Array of Independent Disks", difficulty: "medium", incorrect_answer_1: "Rapid Access for Indexed Devices", incorrect_answer_2: "Range of Applications with Identical Designs", incorrect_answer_3: "Randomized Abstract Identification Description")
+computers_medium_45 = Question.create(category: "Science: Computers", format: "multiple", question: "How many bytes are in a single Kibibyte?", correct_answer: "1024", difficulty: "medium", incorrect_answer_1: "2400", incorrect_answer_2: "1000", incorrect_answer_3: "1240")
+computers_medium_46 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the number of keys on a standard Windows Keyboard?", correct_answer: "104", difficulty: "medium", incorrect_answer_1: "64", incorrect_answer_2: "94", incorrect_answer_3: "76")
+computers_medium_47 = Question.create(category: "Science: Computers", format: "multiple", question: "Unix Time is defined as the number of seconds that have elapsed since when?", correct_answer: "Midnight, January 1, 1970", difficulty: "medium", incorrect_answer_1: "Midnight, July 4, 1976", incorrect_answer_2: "Midnight on the creator of Unix&#039;s birthday", incorrect_answer_3: "Midnight, July 4, 1980")
+computers_medium_48 = Question.create(category: "Science: Computers", format: "multiple", question: "How many bits make up the significand portion of a single precision floating point number?", correct_answer: "23", difficulty: "medium", incorrect_answer_1: "8", incorrect_answer_2: "53", incorrect_answer_3: "15")
+computers_medium_49 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the &#039;S&#039; in the RSA encryption algorithm stand for?", correct_answer: "Shamir", difficulty: "medium", incorrect_answer_1: "Secure", incorrect_answer_2: "Schottky", incorrect_answer_3: "Stable")
+
+## Computers::Hard
+
+computers_hard_0 = Question.create(category: "Science: Computers", format: "multiple", question: "The Harvard architecture for micro-controllers added which additional bus?", correct_answer: "Instruction", difficulty: "hard", incorrect_answer_1: "Address", incorrect_answer_2: "Data", incorrect_answer_3: "Control")
+computers_hard_1 = Question.create(category: "Science: Computers", format: "multiple", question: "What was the name of the security vulnerability found in Bash in 2014?", correct_answer: "Shellshock", difficulty: "hard", incorrect_answer_1: "Heartbleed", incorrect_answer_2: "Bashbug", incorrect_answer_3: "Stagefright")
+computers_hard_2 = Question.create(category: "Science: Computers", format: "multiple", question: "How many Hz does the video standard PAL support?", correct_answer: "50", difficulty: "hard", incorrect_answer_1: "59", incorrect_answer_2: "60", incorrect_answer_3: "25")
+computers_hard_3 = Question.create(category: "Science: Computers", format: "multiple", question: "The internet domain .fm is the country-code top-level domain for which Pacific Ocean island nation?", correct_answer: "Micronesia", difficulty: "hard", incorrect_answer_1: "Fiji", incorrect_answer_2: "Tuvalu", incorrect_answer_3: "Marshall Islands")
+computers_hard_4 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these names was an actual codename for a cancelled Microsoft project?", correct_answer: "Neptune", difficulty: "hard", incorrect_answer_1: "Enceladus", incorrect_answer_2: "Pollux", incorrect_answer_3: "Saturn")
+computers_hard_5 = Question.create(category: "Science: Computers", format: "multiple", question: "What port does HTTP run on?", correct_answer: "80", difficulty: "hard", incorrect_answer_1: "53", incorrect_answer_2: "443", incorrect_answer_3: "23")
+computers_hard_6 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these was the name of a bug found in April 2014 in the publicly available OpenSSL cryptography library?", correct_answer: "Heartbleed", difficulty: "hard", incorrect_answer_1: "Shellshock", incorrect_answer_2: "Corrupted Blood", incorrect_answer_3: "Shellscript")
+computers_hard_7 = Question.create(category: "Science: Computers", format: "multiple", question: "Who is the original author of the realtime physics engine called PhysX?", correct_answer: "NovodeX", difficulty: "hard", incorrect_answer_1: "Ageia", incorrect_answer_2: "Nvidia", incorrect_answer_3: "AMD")
+computers_hard_8 = Question.create(category: "Science: Computers", format: "multiple", question: "Which data structure does FILO apply to?", correct_answer: "Stack", difficulty: "hard", incorrect_answer_1: "Queue", incorrect_answer_2: "Heap", incorrect_answer_3: "Tree")
+computers_hard_9 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of the following is the oldest of these computers by release date?", correct_answer: "TRS-80", difficulty: "hard", incorrect_answer_1: "Commodore 64", incorrect_answer_2: "ZX Spectrum", incorrect_answer_3: "Apple 3")
+computers_hard_10 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the name of the process that sends one qubit of information using two bits of classical information?", correct_answer: "Quantum Teleportation", difficulty: "hard", incorrect_answer_1: "Super Dense Coding", incorrect_answer_2: "Quantum Entanglement", incorrect_answer_3: "Quantum Programming")
+computers_hard_11 = Question.create(category: "Science: Computers", format: "multiple", question: "America Online (AOL) started out as which of these online service providers?", correct_answer: "Quantum Link", difficulty: "hard", incorrect_answer_1: "CompuServe", incorrect_answer_2: "Prodigy", incorrect_answer_3: "GEnie")
+computers_hard_12 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these is not a key value of Agile software development?", correct_answer: "Comprehensive documentation", difficulty: "hard", incorrect_answer_1: "Individuals and interactions", incorrect_answer_2: "Customer collaboration", incorrect_answer_3: "Responding to change")
+computers_hard_13 = Question.create(category: "Science: Computers", format: "multiple", question: "What does the International System of Quantities refer 1024 bytes as?", correct_answer: "Kibibyte", difficulty: "hard", incorrect_answer_1: "Kylobyte", incorrect_answer_2: "Kilobyte", incorrect_answer_3: "Kelobyte")
+computers_hard_14 = Question.create(category: "Science: Computers", format: "multiple", question: "Which RAID array type is associated with data mirroring?", correct_answer: "RAID 1", difficulty: "hard", incorrect_answer_1: "RAID 0", incorrect_answer_2: "RAID 10", incorrect_answer_3: "RAID 5")
+computers_hard_15 = Question.create(category: "Science: Computers", format: "multiple", question: "What was the first company to use the term &quot;Golden Master&quot;?", correct_answer: "Apple", difficulty: "hard", incorrect_answer_1: "IBM", incorrect_answer_2: "Microsoft", incorrect_answer_3: "Google")
+computers_hard_16 = Question.create(category: "Science: Computers", format: "multiple", question: "Released in 2001, the first edition of Apple&#039;s Mac OS X operating system (version 10.0) was given what animal code name?", correct_answer: "Cheetah", difficulty: "hard", incorrect_answer_1: "Puma", incorrect_answer_2: "Tiger", incorrect_answer_3: "Leopard")
+computers_hard_17 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the name given to layer 4 of the Open Systems Interconnection (ISO) model?", correct_answer: "Transport", difficulty: "hard", incorrect_answer_1: "Session", incorrect_answer_2: "Data link", incorrect_answer_3: "Network")
+computers_hard_18 = Question.create(category: "Science: Computers", format: "multiple", question: "What vulnerability ranked #1 on the OWASP Top 10 in 2013?", correct_answer: "Injection ", difficulty: "hard", incorrect_answer_1: "Broken Authentication", incorrect_answer_2: "Cross-Site Scripting", incorrect_answer_3: "Insecure Direct Object References")
+computers_hard_19 = Question.create(category: "Science: Computers", format: "multiple", question: "Who invented the &quot;Spanning Tree Protocol&quot;?", correct_answer: "Radia Perlman", difficulty: "hard", incorrect_answer_1: "Paul Vixie", incorrect_answer_2: "Vint Cerf", incorrect_answer_3: "Michael Roberts")
+computers_hard_20 = Question.create(category: "Science: Computers", format: "multiple", question: "What major programming language does Unreal Engine 4 use?", correct_answer: "C++", difficulty: "hard", incorrect_answer_1: "Assembly", incorrect_answer_2: "C#", incorrect_answer_3: "ECMAScript")
+computers_hard_21 = Question.create(category: "Science: Computers", format: "multiple", question: "The acronym &quot;RIP&quot; stands for which of these?", correct_answer: "Routing Information Protocol", difficulty: "hard", incorrect_answer_1: "Runtime Instance Processes", incorrect_answer_2: "Regular Interval Processes", incorrect_answer_3: "Routine Inspection Protocol")
+computers_hard_22 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these is not a layer in the OSI model for data communications?", correct_answer: "Connection Layer", difficulty: "hard", incorrect_answer_1: "Application Layer", incorrect_answer_2: "Transport Layer", incorrect_answer_3: "Physical Layer")
+computers_hard_23 = Question.create(category: "Science: Computers", format: "multiple", question: "What was the name of the first Bulgarian personal computer?", correct_answer: "IMKO-1", difficulty: "hard", incorrect_answer_1: "Pravetz 82", incorrect_answer_2: "Pravetz 8D", incorrect_answer_3: "IZOT 1030")
+computers_hard_24 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of the following computer components can be built using only NAND gates?", correct_answer: "ALU", difficulty: "hard", incorrect_answer_1: "CPU", incorrect_answer_2: "RAM", incorrect_answer_3: "Register")
+computers_hard_25 = Question.create(category: "Science: Computers", format: "multiple", question: "What is the codename of the eighth generation Intel Core micro-architecture launched in October 2017?", correct_answer: "Coffee Lake", difficulty: "hard", incorrect_answer_1: "Sandy Bridge", incorrect_answer_2: "Skylake", incorrect_answer_3: "Broadwell")
+computers_hard_26 = Question.create(category: "Science: Computers", format: "multiple", question: "Lenovo acquired IBM&#039;s personal computer division, including the ThinkPad line of laptops and tablets, in what year?", correct_answer: "2005", difficulty: "hard", incorrect_answer_1: "1999", incorrect_answer_2: "2002", incorrect_answer_3: "2008")
+computers_hard_27 = Question.create(category: "Science: Computers", format: "multiple", question: "Which of these Cherry MX mechanical keyboard switches is both tactile and clicky?", correct_answer: "Cherry MX Blue", difficulty: "hard", incorrect_answer_1: "Cherry MX Black", incorrect_answer_2: "Cherry MX Red", incorrect_answer_3: "Cherry MX Brown")
+computers_hard_28 = Question.create(category: "Science: Computers", format: "multiple", question: "Which kind of algorithm is Ron Rivest not famous for creating?", correct_answer: "Secret sharing scheme", difficulty: "hard", incorrect_answer_1: "Hashing algorithm", incorrect_answer_2: "Asymmetric encryption", incorrect_answer_3: "Stream cipher")
+computers_hard_29 = Question.create(category: "Science: Computers", format: "multiple", question: "Who is the founder of Palantir?", correct_answer: "Peter Thiel", difficulty: "hard", incorrect_answer_1: "Mark Zuckerberg", incorrect_answer_2: "Marc Benioff", incorrect_answer_3: "Jack Dorsey")

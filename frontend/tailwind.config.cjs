@@ -14,6 +14,7 @@ module.exports = {
     logs: true,
     rtl: false,
     prefix: "",
-    darkTheme: "valentine",
+    themes: ["pastel", "dracula", "valentine", "coffee", "forest", "cupcake", "emerald", "garden"],
+    darkTheme: "dracula",
   } 
 }
