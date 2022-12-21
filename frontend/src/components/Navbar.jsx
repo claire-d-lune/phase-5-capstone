@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
  
 const Navbar = ({user, setCurrentUser}) => {
-
-
-    console.log(user)
-
-    //Log out use in conext. Redirect the long in page afterward
-    const handleLogout = () => {
-      return axios.delete("/api/logout").then(() => setCurrentUser({}))
+  
+    const navigate = useNavigate() 
+    //Log out. First API, then removed from state. Redirect to login afterward. 
+    const handleLogout = async () => {
+      await axios.delete("/api/logout");
+            setCurrentUser({})
+      return navigate("/") ;
     }
    
     return(
