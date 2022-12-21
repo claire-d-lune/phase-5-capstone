@@ -16,9 +16,8 @@ const Login = ({setCurrentUser}) => {
         setFormData(newForm)
     }
 
-    const handleLogin = () => {
-        axios.post("/api/login", {...formData}, {validateStatus: (status) => {
-            return status === 201;}})               // Resolve only if the status code is 201
+    const handleLogin = () => {                                            // Resolve only if the status code is 201
+        axios.post("/api/login", {...formData}, {validateStatus: (status) => {return status === 201;}})               
             .then(res => setCurrentUser(res.data)) //I validate, so that the user in state will only change on a succesful login 
     }
 
