@@ -19,16 +19,16 @@ function AppRouter() {
   const [currentUser, setCurrentUser] = useState("")
 
   //Fetching my session data for current user: 
-  const {data: userData, isLoading, isError} = useQuery(["currentUser"], () => {
-    return axios.get("/api/me")
-                .then(res => res.data)
-                .then(data => {
-                  setCurrentUser(data)
-                  return data
-                })
-  })
-
-  console.log(currentUser)
+  const {data: userData, isLoading, isError} = useQuery({
+      queryKey: ["currentUser"], 
+      queryFn: () => axios.get("/api/me")
+                    .then(res => res.data)
+                    .then(data => {
+                    setCurrentUser(data)
+                    return data
+                    }),
+      refetchOnWindowFocus: false
+    })
 
   // if user is loading or no user is found, I will display different routes and pages
   if(isLoading) {
