@@ -35,8 +35,7 @@ class UsersController < ApplicationController
             :last_name, 
             :username,
             :image_url,
-            :password,
-            :confirm_password)
+            :password)
     end
     
 end
