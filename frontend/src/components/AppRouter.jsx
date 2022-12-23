@@ -41,7 +41,7 @@ function AppRouter() {
         <Routes>
           <Route  path = "/login" element={<Login setCurrentUser={setCurrentUser}/>}/>
           <Route  path = "/" element={<Login setCurrentUser={setCurrentUser}/>}/>
-          <Route path = "/signup" element = {<Signup/>}/>
+          <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
         </Routes>)}
   else {
       return <>
@@ -52,8 +52,8 @@ function AppRouter() {
                 <Route path = "/seedy" element={<Seedmaker/>}/>
                 <Route path = "/my_profile" element = {<></>}/>
                 <Route path = "/quizpage/:id" element = {<QuizPage/> }/>
-                <Route path = "/login" element ={<Login/>}/>
-                <Route path = "/signup" element = {<Signup/>}/>
+                <Route path = "/login" element ={<Login setCurrentUser={setCurrentUser}/>}/>
+                <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
               </Routes>
             </> }
