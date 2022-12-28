@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios";
@@ -7,8 +7,10 @@ import QuestionBox from "./QuestionBox";
 const QuizPage = () => {
 
     const {id} = useParams()
-    const {data: quizInfo, isLoading, isError, refetch} = useQuery([`quiz${id}`], () => {
-        return axios.get(`/api/quizzes/${id}`).then(res => res.data)
+    const {data: quizInfo, isLoading, isError, refetch} = useQuery({
+        queryKey: [`quiz${id}`], 
+        queryFn: () => {return axios.get(`/api/quizzes/${id}`).then(res => res.data)},
+        refetchOnWindowFocus: false,
     });
     const {data: userData} = useQuery(['currentUser'])
 
