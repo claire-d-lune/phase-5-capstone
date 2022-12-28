@@ -10,6 +10,7 @@ const QuizPage = () => {
     const {data: quizInfo, isLoading, isError, refetch} = useQuery([`quiz${id}`], () => {
         return axios.get(`/api/quizzes/${id}`).then(res => res.data)
     });
+    const {data: userData} = useQuery(['currentUser'])
 
     //creating an empty results array. I will create default entries of false for each question, and update the array appropriately
     //as answers are submitted. 
@@ -28,24 +29,26 @@ const QuizPage = () => {
     })
 
 
-    //submit function: 
 
-    let [score, setScore] = useState(0)
+    //submit function: 
+    // let [score, setScore] = useState(0)
     const handleSubmit = () => {
         let results = quizResults.filter(n => n).length
-        console.log("Score is: " + results)
-        setScore(results)
+        // console.log("Score is: " + results)
+        // setScore(results)
+        axios.post("/api/attempts", {quiz_id: id, user_id: userData.id, score: results}).then(res => console.log(res.data))
     }
+    
     return(
-        <div class="grid relative justify-center top-10">  
+        <div className="grid relative justify-center top-10">  
             <div className="fixed left-10 top-48 text-center my-5">
                 <div className="radial-progress" style={{"--value":(quizResults.length * 10)}}>{(quizResults.length * 10)}</div>
                 <p className="py-2">Progress</p>
             </div>
-            <div className="fixed left-10 top-80 text-center my-5">
+            {/* <div className="fixed left-10 top-80 text-center my-5">
                 <div className="radial-progress" style={{"--value":(score * 10)}}>{(score * 10)}%</div>
                 <p className="py-2">Results</p>
-            </div>
+            </div> */}
                 {questionStack}
             <div className="form-control-radio card-actions justify-center">
                     <button onClick={handleSubmit} className="btn btn-primary justify-center">Submit Quiz</button>

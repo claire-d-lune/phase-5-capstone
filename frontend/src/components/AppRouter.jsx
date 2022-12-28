@@ -13,11 +13,11 @@ import QuizPage from './QuizPage'
 import Seedmaker from './dev_components/Seedmaker'
 import axios from 'axios'
 import { UserContext  } from "../context/context";
+import ProfilePage from "./ProfilePage";
 
 function AppRouter() {
 
   const [currentUser, setCurrentUser] = useState("")
-
   //Fetching my session data for current user: 
   const {data: userData, isLoading, isError} = useQuery({
       queryKey: ["currentUser"], 
@@ -55,6 +55,7 @@ function AppRouter() {
                 <Route path = "/login" element ={<Login setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
+                <Route path = "/profile" element ={<ProfilePage/>}/>
               </Routes>
             </> }
 }
