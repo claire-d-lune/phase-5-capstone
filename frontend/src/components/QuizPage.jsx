@@ -10,7 +10,7 @@ const QuizPage = () => {
     const {data: quizInfo, isLoading, isError, refetch} = useQuery({
         queryKey: [`quiz${id}`], 
         queryFn: () => {return axios.get(`/api/quizzes/${id}`).then(res => res.data)},
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: false
     });
     const {data: userData} = useQuery(['currentUser'])
 
