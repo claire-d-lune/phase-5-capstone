@@ -27,7 +27,8 @@ const Home = () => {
     }
 
     const handleCategorySelect = (e) => {
-        setCategory(e.target.value.toLowerCase())
+        console.log("Selecting category: ")
+        setCategory(e.target.id.toLowerCase())
     }
 
     const handleDifficultySelect = (e) => {
@@ -55,6 +56,8 @@ const Home = () => {
     let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
     //Category: 
 
+    quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
+
 
 
     let quizCards = quizList?.map((quiz) => {
@@ -69,46 +72,13 @@ const Home = () => {
     return(
         <>
         {/* Search: */}
-        <div className="relative w-auto left-1/4 mt-2" >
+        <div className="relative w-fit left-1/4 mt-2" >
             <div className="inline-flex">
                 <input onChange={handleSearchForm} type="text" id="searchbar" placeholder="Search…" className="input input-bordered" value={searchTerm} />
                 <button className="btn btn-square">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                 </button>
             </div>
-            {/* <div onChange={handleCategorySelect} className="inline-flex">
-                <select className="select select-bordered">
-                    <option disabled selected>Select a difficulty</option>
-                    <option>Any</option>
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
-                </select>
-                <button className="btn">Go</button>
-            </div> */}
-            {/* <div className="inline-flex">
-                <div onChange={handleDifficultySelect} className="dropdown">
-                    <label tabIndex={0} className="btn m-1">{"Select difficulty" + " "} &#9660;</label>
-                    <div tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 form-control">
-                        <li>
-                            <div>
-                                <p>Easy  </p><input type="checkbox" className="toggle toggle-success"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div><p>Medium</p><input type="checkbox" className="toggle toggle-warning"/></div>
-                        </li>
-                        <li>
-                            <div><p>Hard</p><input type="checkbox" className="toggle toggle-error"/></div>
-                        </li>
-                        <li><p>Any</p></li>
-                        
-                        <li></li>
-                        <input type="checkbox" className="toggle toggle-info" checked />
-                    </div>
-                    
-                </div>
-            </div> */}
             <div className="inline-flex">
                 <div onChange={handleDifficultySelect} className="dropdown">
                     <label tabIndex={0} className="btn m-1">{"Select difficulty  " + " "} &#9660;</label>
@@ -134,8 +104,8 @@ const Home = () => {
                             </div>
                             <div className="form-control w-52">
                                 <label className="cursor-pointer label">
-                                <span className="label-text">All</span> 
-                                <input type="checkbox" className="toggle" id="all" defaultChecked/>
+                                    <span className="label-text">All</span> 
+                                    <input type="checkbox" className="toggle" id="all" defaultChecked/>
                                 </label>
                             </div>
                     </div>
@@ -146,10 +116,6 @@ const Home = () => {
                 <div onChange={handleCategorySelect} className="dropdown">
                     <label tabIndex={0} className="btn m-1">{"Select a Category  " + " "} &#9660;</label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        {/* <li><p>easy</p></li>
-                        <li><p>medium</p></li>
-                        <li><p>hard</p></li> */}
-                        <li><p>All</p></li>
                         {categoryOptions}
                     </ul>
                 </div>
