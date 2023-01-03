@@ -4,7 +4,6 @@ import QuizCard from "./QuizCard";
 import axios from "axios";
 
 const Home = () => {
-
     // Setting up useQuery
     // In the first argument we are naming/identifying the specific data we are fetching here
     // in order to reference it later for refetch, etc.
@@ -12,7 +11,6 @@ const Home = () => {
     const {data, isLoading, isError} = useQuery({
         queryKey: ["quizzes"], 
         queryFn: () => axios("/api/quizzes").then(res => res.data), 
-        //I can't figure out why these options seem to be ignored. 
         refetchOnWindowFocus: false,
     })
 
@@ -36,9 +34,6 @@ const Home = () => {
         setDifficulty(newSelection)
     }
     
-    console.log(selectedCategory)
-
-  
     // Here I am creating a select option for each unique category of quiz instead of creating each manually
     // This will scale better as I add new ones. 
     let categoryOptions = data?.map((quiz) => quiz.category)
@@ -52,38 +47,21 @@ const Home = () => {
     })
 
     //--FILTERS-- Using the filters on my data below: 
-        //SEARCH
-        let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
-        //CATEGORY:
-        if (selectedCategory != "all"){
-            quizList = quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
-        }
-        //DIFFICULTY (If the specific difficulty is not selected (false) I will filter it out
-        
-
-
-        // if (selectedDifficulty.easy) {
-        //     console.log("Easy Toggled")
-        //     console.log(quizList)
-        //     quizList = quizList?.filter((q) => q.questions[0]. != "easy")}
-        // console.log(quizList)
-        // if (selectedDifficulty.medium) {
-        //     quizList = quizList?.filter((q) => q.questions[0][difficulty].toLowerCase() != "medium")}
-        // if (selectedDifficulty.hard) {
-        //     quizList = quizList?.filter((q) => q.questions[0][difficulty].toLowerCase() != "hard")}
-        
-        
-
-
-
+    //SEARCH
+    let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    //CATEGORY:
+    if (selectedCategory != "all"){
+        quizList = quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
+    }
+    //DIFFICULTY (If the specific difficulty is not selected (false) I will filter it out
+    // Do nothing if easy is selected, else filter out all easy. So on for the other two difficulties. 
+    selectedDifficulty.easy ? null : (quizList = quizList.filter((quiz) => (quiz.questions[0]['difficulty'].toLowerCase() != "easy")))
+    selectedDifficulty.medium ? null : (quizList = quizList.filter((quiz) =>(quiz.questions[0]['difficulty'].toLowerCase() != "medium")))
+    selectedDifficulty.hard ? null : (quizList = quizList.filter((quiz) => (quiz.questions[0]['difficulty'].toLowerCase() != "hard")))
+    //Create a JSX element for each quiz that meets all of the filter requirements
     let quizCards = quizList?.map((quiz) => {
         return <QuizCard key={quiz.id} quiz={quiz}/>
     })
-
-
-    console.log("Difficulties: ")
-    console.log(selectedDifficulty)
-
     // Rendered elements here:
     return(
         <>
@@ -130,9 +108,13 @@ const Home = () => {
             </div>
             <div className="inline-flex">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn m-1">{"Select a Category  " + " "} &#9660;</label>
+                    {(selectedCategory === 'all') ? <label tabIndex={0} className="btn m-1">{"Select a Category  " + " "} &#9660;</label> : <label tabIndex={0} className="btn m-1">{selectedCategory} &#9660;</label>}
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <p onClick={handleCategorySelect} id="all"> All </p>
+                        </li>
                         {categoryOptions}
+                      
                     </ul>
                 </div>
             </div>

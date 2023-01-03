@@ -33,11 +33,8 @@ const QuizPage = () => {
 
 
     //submit function: 
-    // let [score, setScore] = useState(0)
     const handleSubmit = () => {
         let results = quizResults.filter(n => n).length
-        // console.log("Score is: " + results)
-        // setScore(results)
         axios.post("/api/attempts", {quiz_id: id, user_id: userData.id, score: results}).then(res => console.log(res.data))
     }
     

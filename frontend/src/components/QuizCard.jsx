@@ -10,10 +10,10 @@ const QuizCard = ({quiz}) => {
                 <Link to={`/quizpage/${quiz.id}`}>
                     <h2 className="card-title underline">{quiz.title}</h2>
                 </Link>
-                <p>{quiz.description}</p>
+                <span className="text-xs justify-self-end">difficulty: {quiz.questions[0]['difficulty']}</span>
                 <div className="card-actions justify-center">
                 <Link to={`/quizpage/${quiz.id}`}>
-                    <button className="btn btn-primary">Try Your Luck</button>
+                    <button className="btn btn-primary align-self-end">Try Your Luck</button>
                 </Link>
                 </div>
             </div>
