@@ -27,7 +27,6 @@ const Home = () => {
     }
 
     const handleCategorySelect = (e) => {
-        console.log("Selecting category: ")
         setCategory(e.target.id.toLowerCase())
     }
 
@@ -47,16 +46,33 @@ const Home = () => {
     categoryOptions = [...new Set(categoryOptions)]
     // creating actual JSX element from each option:
     categoryOptions = categoryOptions.map((category) => {
-        return  <li key={category + "_li"} id={category}>
-                    <p> {category} </p>
+        return  <li key={category + "_li"}>
+                    <p onClick={handleCategorySelect} id={category}> {category} </p>
                 </li>
     })
 
-    //Using the filters on my data below: 
-    let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    //Category: 
+    //--FILTERS-- Using the filters on my data below: 
+        //SEARCH
+        let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
+        //CATEGORY:
+        if (selectedCategory != "all"){
+            quizList = quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
+        }
+        //DIFFICULTY (If the specific difficulty is not selected (false) I will filter it out
+        
 
-    quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
+
+        // if (selectedDifficulty.easy) {
+        //     console.log("Easy Toggled")
+        //     console.log(quizList)
+        //     quizList = quizList?.filter((q) => q.questions[0]. != "easy")}
+        // console.log(quizList)
+        // if (selectedDifficulty.medium) {
+        //     quizList = quizList?.filter((q) => q.questions[0][difficulty].toLowerCase() != "medium")}
+        // if (selectedDifficulty.hard) {
+        //     quizList = quizList?.filter((q) => q.questions[0][difficulty].toLowerCase() != "hard")}
+        
+        
 
 
 
@@ -113,7 +129,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="inline-flex">
-                <div onChange={handleCategorySelect} className="dropdown">
+                <div className="dropdown">
                     <label tabIndex={0} className="btn m-1">{"Select a Category  " + " "} &#9660;</label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         {categoryOptions}
