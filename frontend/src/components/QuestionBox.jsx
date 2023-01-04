@@ -1,5 +1,4 @@
 import React from "react";
-import QuestionResults from "./QuestionResults";
 
 const QuestionBox = ({number, question, quizResults, choices}) => {
 

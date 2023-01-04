@@ -29,7 +29,8 @@ const QuizPage = () => {
                 number={questionNumber}
                 question={q}
                 quizResults={quizResults}
-                choices = {choices}/>})
+                choices = {choices}/>
+    })
 
     //I'm using results in state as well to pass along after render and the rerender. 
     const [finalResults, setFinalResults] = useState([])
