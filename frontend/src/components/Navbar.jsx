@@ -24,7 +24,7 @@ const Navbar = ({user, setCurrentUser}) => {
               <li><Link to="/home">Homepage</Link></li>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/leaderboard">Leaderboards</Link></li>
-              <li><Link to="/create_a_quiz">Create a Custom Quiz</Link></li>
+              <li><Link to="/create_quiz">Create a Custom Quiz</Link></li>
             </ul>
           </div>
         </div>
@@ -62,7 +62,7 @@ const Navbar = ({user, setCurrentUser}) => {
             </li>
             <li><a>Settings</a></li>
             <li><a onClick={handleLogout}>Logout</a></li>
-            <li><Link to="/create_a_quiz">Create a Quiz</Link></li>
+            <li><Link to="/create_quiz">Create a Quiz</Link></li>
           </ul>
        </div>
         </div>

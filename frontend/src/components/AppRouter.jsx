@@ -13,7 +13,7 @@ import QuizPage from './QuizPage';
 import Seedmaker from './dev_components/Seedmaker';
 import axios from 'axios';
 import ProfilePage from "./ProfilePage";
-import CreateQuizOptions from "./CreateQuizOptions";
+import CreateQuiz from "./CreateQuiz";
 
 const AppRouter = () => {
 
@@ -56,7 +56,7 @@ const AppRouter = () => {
                 <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
                 <Route path = "/profile" element ={<ProfilePage/>}/>
-                <Route path = "/create_options" element ={<CreateQuizOptions />}/>
+                <Route path = "/create_quiz" element ={<CreateQuiz />}/>
               </Routes>
             </> }
 }
