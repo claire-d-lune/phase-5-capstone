@@ -1,23 +1,23 @@
 //I separated this file so that I can use the user context and react query client that I created in app. 
 
-import React, { useContext, useState } from "react";
-import { Routes, Route } from 'react-router-dom'
-import { useQuery, useMutation} from '@tanstack/react-query'
+import React, { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
-import Home from  './Home'
-import Leaderboard from './Leaderboard'
-import Login from './Login'
+import Home from  './Home';
+import Leaderboard from './Leaderboard';
+import Login from './Login';
 import Signup from './Signup';
-import Navbar from './Navbar'
-import QuizPage from './QuizPage'
-import Seedmaker from './dev_components/Seedmaker'
-import axios from 'axios'
-import { UserContext  } from "../context/context";
+import Navbar from './Navbar';
+import QuizPage from './QuizPage';
+import Seedmaker from './dev_components/Seedmaker';
+import axios from 'axios';
+import ProfilePage from "./ProfilePage";
+import CreateQuizOptions from "./CreateQuizOptions";
 
-function AppRouter() {
+const AppRouter = () => {
 
   const [currentUser, setCurrentUser] = useState("")
-
   //Fetching my session data for current user: 
   const {data: userData, isLoading, isError} = useQuery({
       queryKey: ["currentUser"], 
@@ -55,6 +55,8 @@ function AppRouter() {
                 <Route path = "/login" element ={<Login setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
+                <Route path = "/profile" element ={<ProfilePage/>}/>
+                <Route path = "/create_options" element ={<CreateQuizOptions />}/>
               </Routes>
             </> }
 }

@@ -14,23 +14,18 @@ const Seedmaker = () => {
   // }
 
 
-
-
-
-
-
   //Question Seeder Below: 
   const [questions, setQuestions] = useState()
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=30&category=18&difficulty=hard&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=50&category=17&difficulty=hard&type=multiple")
     .then(res => res.json())
     .then(data => setQuestions(data))
   }, []);
 
   const formatQuestion = (object, counter) => {
     return (
-  `computers_hard_${counter} = Question.create(category: "${object.category}", format: "${object.type}", question: "${object.question}", correct_answer: "${object.correct_answer}", difficulty: "${object.difficulty}", incorrect_answer_1: "${object.incorrect_answers[0]}", incorrect_answer_2: "${object.incorrect_answers[1]}", incorrect_answer_3: "${object.incorrect_answers[2]}")`
+  `nat_sci_hard_${counter} = Question.create(category: "Nature & Science", format: "${object.type}", question: "${object.question}", correct_answer: "${object.correct_answer}", difficulty: "${object.difficulty}", incorrect_answer_1: "${object.incorrect_answers[0]}", incorrect_answer_2: "${object.incorrect_answers[1]}", incorrect_answer_3: "${object.incorrect_answers[2]}")`
       )
   }
 

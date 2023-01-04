@@ -1,19 +1,19 @@
 import React from "react";
 
-const QuestionBox = ({number, question, quizResults}) => {
+const QuestionBox = ({number, question, quizResults, choices}) => {
 
     const handleSelect = (e) => {
         //if the answer is correct, update the results array at the appropriate index
         e.target.id === question.correct_answer ? quizResults[number - 1] = true : quizResults[number - 1] = false
         console.log(quizResults)
     }
-
     //assign answers to array and use a shuffle so the correct choice is not predictable. 
-    let choices = [question.correct_answer, question.incorrect_answer_1, question.incorrect_answer_2, question.incorrect_answer_3]
+    // let choices = [question.correct_answer, question.incorrect_answer_1, question.incorrect_answer_2, question.incorrect_answer_3]
     //shuffling the order of the the possible answers below:
     choices.sort((a, b) => 0.5 - Math.random())
-
-    return <div className="card w-4/5 place-self-center bg-secondary text-neutral-content my-4">
+    
+    // return isSubmitted ? <QuestionResults key={`${number} `} question = {question} choices = {choices} quizResults={quizResults}/> : 
+    return     <div className="card w-4/5 place-self-center bg-secondary text-neutral-content my-4">
                 <div className="card-body items-center text-left pt-4">
                     <div className="divider my-2">{number}</div>
                     <p>{question.category}</p>
@@ -21,10 +21,6 @@ const QuestionBox = ({number, question, quizResults}) => {
                         <div onChange={handleSelect}className="form-control">
                             <label className="label cursor-pointer">
                                 <span className="label-text text-secondary-content mr-5">{choices[0]}  </span> 
-                                {/*
-                                    This is a little bit strange, but I am using the answer itself as the id instead of "correct" or not, 
-                                    so it is less visible which answer is correct from inspect element.
-                                */}
                                 <input type="radio"  name={`radio-${number}`} id={`${choices[0]}`}className="radio radio-primary" />
                             </label>
                             <label className="label cursor-pointer">
@@ -42,7 +38,6 @@ const QuestionBox = ({number, question, quizResults}) => {
                         </div>
                 </div>
             </div>
-
 }
 
 export default QuestionBox
