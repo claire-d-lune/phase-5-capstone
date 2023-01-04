@@ -16,14 +16,12 @@ const Login = ({setCurrentUser}) => {
         setFormData(newForm)
     }
 
-    //  importing navigate to redirect. 
-    // The re-render works fine when no one is logged in, but we would remain on the login page 
-    // If the user is changed without first logging out. 
+    // Using use navigate to redirect after succesful log in. 
     const navigate = useNavigate() 
-
-    const handleLogin = () => {                                            // Resolve only if the status code is 201
-        axios.post("/api/login", {...formData}, {validateStatus: (status) => {return status === 201;}})               
-            .then(res => setCurrentUser(res.data)).then(() => navigate("/")) //I validate, so that the user in state will only change on a succesful login 
+    const handleLogin = (e) => {
+        e.preventDefault()                                            
+        axios.post("/api/login", {...formData}, {validateStatus: (status) => {return status === 201;}}) // Resolve only if the status code is 201        
+            .then(res => setCurrentUser(res.data)).then(() => navigate("/"))                            //I validate, so that the user in state will only change on a succesful login 
     }
 
     return(
@@ -35,7 +33,7 @@ const Login = ({setCurrentUser}) => {
                     <p className="py-6">Login to an existing account to view your personal records, and compare results on the leaderboard. You can even create quizzes for others to play! Ready to get quizzlin?</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+                    <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Username</span>
@@ -49,12 +47,12 @@ const Login = ({setCurrentUser}) => {
                             <input type="text" onChange={handleFormChange} id="password" placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
-                        <button onClick={handleLogin} className="btn btn-primary">Login</button>
-                        <label className="label justify-center">
-                            <Link to="/signup" className="label-text-alt link link-hover">Sign Up</Link>
-                        </label>
+                            <button onClick={handleLogin} className="btn btn-primary">Login</button>
+                            <label className="label justify-center">
+                                <Link to="/signup" className="label-text-alt link link-hover">Sign Up</Link>
+                            </label>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

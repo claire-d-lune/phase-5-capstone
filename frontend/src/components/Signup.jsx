@@ -11,7 +11,6 @@ const Signup = ({setCurrentUser}) => {
         image_url: ""
     })
 
-    
     const avatarImages = {
         viking: "https://img.freepik.com/free-vector/viking-character-ancient-scandinavian-warrior-with-sword-wooden-shield-with-snake-emblem-vector-cartoon-illustration-medieval-barbarian-horned-helmet-isolated-background_107791-9242.jpg?w=900&t=st=1671749509~exp=1671750109~hmac=a7aea410c42302f21d6a2f64fd8576a81000bbb35a67d92d9e5686f1f8b034dc",
         robot: "https://img.freepik.com/free-vector/vintage-robot-toy-white-background_1308-77501.jpg?w=2000",
@@ -34,14 +33,12 @@ const Signup = ({setCurrentUser}) => {
         newForm[e.target.id] = e.target.value
         setFormData(newForm)
     }
-
     console.log(formData)
-    
     
     //Setting up a navigate function to redirect after succesful sign up
     const navigate = useNavigate() 
-
-    const handleNewSignup = () => {
+    const handleNewSignup = (e) => {
+        e.preventDefault()//This line is only neccesary when submitted via keyboard command instead of button
         axios.post("/api/signup", formData, {validateStatus: (status) => {return status === 201;}})
             .then(res => setCurrentUser(res.data)).then(() => navigate("/home"))
     } 
@@ -53,9 +50,9 @@ const Signup = ({setCurrentUser}) => {
                     <h1 className="text-5xl font-bold">Signup for a new account!</h1>
                     <p className="py-6">Sign up to record your quiz results and create your own for others to try!</p>
                 </div>
-                {/* FO */}
+                {/* Form */}
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+                    <form onSubmit={handleNewSignup} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Username</span>
@@ -68,7 +65,7 @@ const Signup = ({setCurrentUser}) => {
                             </label>
                             <div>
                                 <select onChange={handleAvatarSelect} className="select select-bordered w-2/3">
-                                    <option disabled defaultValue>Pick one</option>
+                                    <option disabled selected>Pick one</option>
                                     <option id="viking">Viking</option>
                                     <option id="robot">Robot</option>
                                     <option id="unicorn">Unicorn</option>
@@ -98,10 +95,10 @@ const Signup = ({setCurrentUser}) => {
                         <div className="form-control mt-6">
                             <button onClick={handleNewSignup} className="btn btn-primary">Signup here!</button>
                             <label className="label label-text-alt justify-center mt-4">
-                                Already have an account? <Link className="label-text-alt link-accent link-hover ml-2" to="/login">Log in.</Link>
+                                Already have an account? <Link className="label label-text-alt  link-hover ml-2" to="/login">Log in.</Link>
                             </label>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
