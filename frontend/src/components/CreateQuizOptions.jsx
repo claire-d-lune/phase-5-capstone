@@ -3,19 +3,30 @@ import { useQuery } from "@tanstack/react-query";
 
 const CreateQuizOptions = () => {
 
-    const [quizSettings, setQuizSettings] = useState({
-        difficulty: "Easy",
-        questionCount: 10,
-        category: "",
-    })
-
+    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", questionCount: 10 , category: ""})
     const {data: userData} = useQuery(['currentUser'])
-
-    const handleSlider = (e) => {
-        console.log(e)
-        console.log(e.target)
-        console.log(e.target.value)
+    const handleSlider = (e) => {   
+        let newSettings = {...quizSettings}
+        let selection = parseInt(e.target.value) 
+        switch(selection) { 
+            case 1: newSettings.difficulty = 'Easy'; 
+            break
+            case 2: newSettings.difficulty = 'Medium'; 
+            break 
+            case 3: newSettings.difficulty = 'Hard'; 
+            break
+            default: newSettings.questionCount = selection
+        }
+        setQuizSettings(newSettings)
     } 
+
+    console.log('quizSettings')
+    console.log(quizSettings)
+    // console.log('other quizSettings')
+    // let otherQS = {...quizSettings}
+    // console.log(otherQS)
+    
+
 
     return (
         <>
@@ -24,7 +35,7 @@ const CreateQuizOptions = () => {
         <div className="form-control w-2/3 relative left-20 bg-[#F6DCD7] text-black">
             <div className="w-2/3 text-center self-center">
             <label>Select a Difficulty: </label>
-            <input onChange={handleSlider} type="range" min="1" max="3" className="range" step="1" />
+            <input onChange={handleSlider} type="range" min="1" max="3" className="range" step="1"/>
             <div className="w-full flex justify-between text-xs px-2">
                 <span>Easy</span>
                 <span>Medium</span>
@@ -40,7 +51,7 @@ const CreateQuizOptions = () => {
             </div>
             <div className="w-2/3 text-center self-center">
                 <label>Select Number of Questions: </label>
-                <input type="range" min="10" max="30" className="range" step="5" />
+                <input onChange={handleSlider} type="range" min="10" max="30" className="range" step="5" />
                 <div className="w-full flex justify-between text-xs px-2">
                     <span>10</span>
                     <span>15</span>
@@ -60,8 +71,9 @@ const CreateQuizOptions = () => {
                         <option id="spyglass">Investigator</option>
                 </select>
             </div>
-            <btn className="btn">Create Your Form: </btn>
+            
         </div>
+        <button className="btn">Create Your Form: </button>
         </>
     )
 }
