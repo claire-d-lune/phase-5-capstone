@@ -1086,3 +1086,8 @@ while question_count < 10
     QuizQuestion.create(quiz_id: film_quiz_hard1.id, question_id: hard_array[question_count].id, weight: 1)
     question_count += 1 
 end
+
+
+Quiz.all.each do |t| 
+    t.update(description: Faker::Lorem.paragraph(sentence_count: 4, random_sentences_to_add: 4))
+end

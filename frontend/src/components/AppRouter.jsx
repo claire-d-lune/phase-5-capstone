@@ -1,8 +1,8 @@
 //I separated this file so that I can use the user context and react query client that I created in app. 
 
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
-import { useQuery, useMutation} from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import Home from  './Home';
 import Leaderboard from './Leaderboard';
@@ -13,7 +13,7 @@ import QuizPage from './QuizPage';
 import Seedmaker from './dev_components/Seedmaker';
 import axios from 'axios';
 import ProfilePage from "./ProfilePage";
-import CreateQuiz from "./CreateQuizOptions";
+import CreateQuizOptions from "./CreateQuizOptions";
 
 const AppRouter = () => {
 
@@ -56,7 +56,7 @@ const AppRouter = () => {
                 <Route path = "/signup" element = {<Signup setCurrentUser={setCurrentUser}/>}/>
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
                 <Route path = "/profile" element ={<ProfilePage/>}/>
-                <Route path = "/create_a_quiz" element ={<CreateQuiz />}/>
+                <Route path = "/create_options" element ={<CreateQuizOptions />}/>
               </Routes>
             </> }
 }
