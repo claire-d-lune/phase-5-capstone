@@ -24,7 +24,7 @@ const Navbar = ({user, setCurrentUser}) => {
               <li><Link to="/home">Homepage</Link></li>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/leaderboard">Leaderboards</Link></li>
-              <li><Link to="/create_a_quiz">Create a Custom Quiz</Link></li>
+              <li><Link to="/create_quiz">Create a Custom Quiz</Link></li>
             </ul>
           </div>
         </div>
@@ -35,7 +35,7 @@ const Navbar = ({user, setCurrentUser}) => {
           <Link className="btn btn-ghost normal-case text-2xl" to="/home">Quizzler 2.0</Link>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-primary">Create Your Own Quiz</button>
+          <Link to="/create_quiz" className="btn btn-primary">Create Your Own Quiz</Link>
 
           <button className="btn btn-ghost btn-circle">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
@@ -49,7 +49,6 @@ const Navbar = ({user, setCurrentUser}) => {
           <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              {/* <img src="https://placeimg.com/80/80/people" /> */}
               <img src={user.image_url} alt="User Image" />
             </div>
           </label>
@@ -62,7 +61,7 @@ const Navbar = ({user, setCurrentUser}) => {
             </li>
             <li><a>Settings</a></li>
             <li><a onClick={handleLogout}>Logout</a></li>
-            <li><Link to="/create_a_quiz">Create a Quiz</Link></li>
+            <li><Link to="/create_quiz">Create a Quiz</Link></li>
           </ul>
        </div>
         </div>

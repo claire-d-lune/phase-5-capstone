@@ -5,8 +5,7 @@ import axios from "axios";
 
 const Home = () => {
     // Setting up useQuery
-    // In the first argument we are naming/identifying the specific data we are fetching here
-    // in order to reference it later for refetch, etc.
+    // In the first argument we are naming/identifying the specific data we are fetching here in order to reference it later for refetch, etc.
     // The second argument is the function that will perform the fetch and set the data
     const { data } = useQuery({
         queryKey: ["quizzes"], 
@@ -16,7 +15,7 @@ const Home = () => {
 
     //Creating search and the filters (category and difficulty)
     const [selectedCategory, setCategory] = useState("all")
-    const [selectedDifficulty, setDifficulty] = useState({easy: true, medium: true, hard: true})
+    const [selectedDifficulty, setDifficulty] = useState({easy: true, medium: true, hard: true, all: true})
     const [searchTerm, setSearchTerm] = useState("")
 
     //Filter-style search by title
@@ -34,22 +33,20 @@ const Home = () => {
         setDifficulty(newSelection)
     }
     
-    // Here I am creating a select option for each unique category of quiz instead of creating each manually
-    // This will scale better as I add new ones. 
+    // Here I am creating a select option for each unique category of quiz instead of creating each manually.
+    // This will scale better as I add new options via form or seed data. 
     let categoryOptions = data?.map((quiz) => quiz.category)
-    // converting to a set to eliminate duplicates: 
-    categoryOptions = [...new Set(categoryOptions)]
-    // creating actual JSX element from each option:
-    categoryOptions = categoryOptions.map((category) => {
+    categoryOptions = [...new Set(categoryOptions)]         // eliminate duplicates
+    categoryOptions = categoryOptions.map((category) => {   // create actual JSX element from each option
         return  <li key={category + "_li"}>
                     <p onClick={handleCategorySelect} id={category}> {category} </p>
                 </li>
     })
 
     //--FILTERS-- Using the filters on my data below: 
-    //SEARCH
-    let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    //CATEGORY:
+    // SEARCH
+    let quizList = data?.filter((quiz) => quiz.title.toLowerCase().includes(searchTerm.toLowerCase()))  
+    // CATEGORY
     if (selectedCategory != "all"){
         quizList = quizList?.filter((quiz) => quiz.category.toLowerCase() === selectedCategory.toLowerCase())
     }
@@ -76,7 +73,7 @@ const Home = () => {
                 </div>
                 <div className="navbar-center inline-flex">
                     <div onChange={handleDifficultySelect} className="dropdown">
-                        <label tabIndex={0} className="btn m-1">{"Select difficulty  " + " "} &#9660;</label>
+                        <label tabIndex={0} className="btn m-1 gap-2">{"Select difficulty"} <span>&#9660;</span></label>
                         <div tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 form-control">
                             <div className="flex flex-col">
                                 <div className="form-control w-48">
@@ -97,10 +94,10 @@ const Home = () => {
                                     <input type="checkbox" className="toggle toggle-error" id="hard" defaultChecked={selectedDifficulty.hard}/>
                                     </label>
                                 </div>
-                                {/* <div className="form-control w-52">
+                                {/* <div className="form-control w-48">
                                     <label className="cursor-pointer label">
                                         <span className="label-text">All</span> 
-                                        <input type="checkbox" className="toggle" id="all" defaultChecked/>
+                                        <input type="checkbox" className="toggle" id="all" defaultChecked={selectedDifficulty.all}/>
                                     </label>
                                 </div> */}
                         </div>
