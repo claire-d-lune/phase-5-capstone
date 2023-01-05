@@ -35,7 +35,7 @@ const NewQuestionBox = ({title, category, difficulty, index, questionDataArray})
         setQuestionConfirmed(() => true)
     }
 
-    console.log(questionData)
+    // console.log(questionData)
 
     return (
         <div className="card w-full place-self-center bg-white text-neutral-content my-4">
