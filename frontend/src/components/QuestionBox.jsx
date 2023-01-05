@@ -12,8 +12,7 @@ const QuestionBox = ({number, question, quizResults, choices}) => {
     //shuffling the order of the the possible answers below:
     choices.sort((a, b) => 0.5 - Math.random())
     
-    // return isSubmitted ? <QuestionResults key={`${number} `} question = {question} choices = {choices} quizResults={quizResults}/> : 
-    return     <div className="card w-4/5 place-self-center bg-secondary text-neutral-content my-4">
+    return  <div className="card w-4/5 place-self-center bg-secondary text-neutral-content my-4">
                 <div className="card-body items-center text-left pt-4">
                     <div className="divider my-2">{number}</div>
                     <p>{question.category}</p>

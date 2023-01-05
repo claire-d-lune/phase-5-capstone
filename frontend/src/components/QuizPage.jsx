@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios";
 import QuestionBox from "./QuestionBox";
@@ -14,8 +14,7 @@ const QuizPage = () => {
         refetchOnWindowFocus: false});
     const {data: userData} = useQuery({queryKey: ['currentUser'], refetchOnWindowFocus: false})
 
-    // creating an empty results array. I will create default entries of false for each question, and update the array appropriately
-    // as answers are submitted. 
+    // creating an empty results array. I will create default entries of false for each question, and update the array appropriately as answers are submitted. 
     let quizResults = []
 
     // Creating a card for each question. 
@@ -23,7 +22,7 @@ const QuizPage = () => {
     let questionStack = quizInfo?.questions.map(q => {
         quizResults.push(false)
         let choices = [q.correct_answer, q.incorrect_answer_1, q.incorrect_answer_2, q.incorrect_answer_3]
-        //increment a counter for numbering
+    //increment a counter for numbering
         questionNumber += 1
         return  <QuestionBox key={`quiz${id}`+ questionNumber} 
                 number={questionNumber}
@@ -70,7 +69,10 @@ const QuizPage = () => {
                 (finalResults.length === 0) ? 
                 <button onClick={handleSubmit} className="btn btn-primary justify-center">Submit Quiz</button> 
                 :   
-                <><button className="btn btn-secondary justify-center">Return Home</button><button className="btn btn-secondary justify-center">Go To Profile</button></>}
+                <>
+                <Link to='/home' className="btn btn-secondary justify-center">Return Home</Link>
+                <Link to='/profile'  className="btn btn-secondary justify-center">Go To Profile</Link>
+                </>}
             </div>
             <br/>
         </div>)
