@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from '@tanstack/react-query'
 
 const ProfilePage = () => {
 
     const {data: userData} = useQuery(['currentUser'])
+
+    let pointTotal = 0
+    //Totalling the score from all attempts. 
+    userData?.attempts.forEach((attempt) => {
+        pointTotal = pointTotal + attempt.score
+    })
 
     console.log(userData)
 
@@ -27,9 +33,9 @@ const ProfilePage = () => {
                 <div className="px-6">
                 <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
-                    <div className="relative">
-                        <img alt="..." src={userData.image_url} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
-                    </div>
+                        <div className="relative">
+                            <img alt="..." src={userData.image_url} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
+                        </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-left lg:self-center">
                     {/* <div className="py-6 px-3 mt-32 sm:mt-0">
@@ -55,15 +61,13 @@ const ProfilePage = () => {
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{userData.attempts.length}</span><span className="text-sm text-blueGray-400">Attempts</span>
                         </div>
                         <div className="lg:mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span className="text-sm text-blueGray-400">Total Points</span>
+                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{pointTotal}</span><span className="text-sm text-blueGray-400">Total Points</span>
                         </div>
                     </div>
                     </div>
                 </div>
-                <div className="text-center mt-12">
-                    <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">
-                    {userData.username}
-                    </h3>
+                <div className="text-center mt-8">
+                    <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">{userData.username}</h3>
                     <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                     Los Angeles, California
@@ -77,7 +81,6 @@ const ProfilePage = () => {
                     <span>{` | ${userData.last_name}`}</span>
                     </div>
                 </div>
-                
                 <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <p className="text text-inherit pb-4">About me: </p>
                     <div className="flex flex-wrap justify-center">

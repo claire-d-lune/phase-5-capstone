@@ -1089,21 +1089,22 @@ end
 
 
 ## Creating Users and Attempts data to display in the website. So on -> ##
-Quiz.all.each do |t| 
-    t.update(description: Faker::Lorem.paragraph(sentence_count: 6, random_sentences_to_add: 4))
-end
 
-10.times  do
+30.times  do
     User.create(
         username: Faker::Internet.username, 
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        password_digest: "$2a$12$0yPXp0QdIpMOdlwp6OvAk.W2KPRjD0q2gX7txK24b/eE4Y9MCg8UO"
-    )
+        password_digest: "$2a$12$0yPXp0QdIpMOdlwp6OvAk.W2KPRjD0q2gX7txK24b/eE4Y9MCg8UO")
 end
 
 User.all.each do |u|
     15.times do
         Attempt.create(quiz_id: Quiz.all.sample.id, user_id: u.id, score: Faker::Number.between(from: 1, to: 10))
     end
+end
+
+Quiz.all.each do |t| 
+    t.update(description: Faker::Lorem.paragraph(sentence_count: 6, random_sentences_to_add: 4))
+    t.update(author_id: User.all.sample().id)
 end

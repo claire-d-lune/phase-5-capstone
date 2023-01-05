@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const NewQuestionBox = ({title, category, difficulty, index}) => {
+const NewQuestionBox = ({title, category, difficulty, index, questionDataArray}) => {
 
     // I want to use state to record whether or not each question is locked in. When it is, I will pass the question up to an array on the quizpage. 
     const [questionData, setQuestionData] = useState({
@@ -12,13 +12,27 @@ const NewQuestionBox = ({title, category, difficulty, index}) => {
         incorrect_answer_1: '', 
         incorrect_answer_2: '', 
         incorrect_answer_3: '' 
-
     })
+    const [questionConfirmed, setQuestionConfirmed] = useState(false)
 
     const handleInputText = (e) => {
         let newQuestionData = {...questionData}
         newQuestionData[e.target.id] = e.target.value
         setQuestionData(newQuestionData)
+    }
+
+    const handleConfirmQuestion = () => {
+        if ((questionData.question == '') || 
+            (questionData.correct_answer == '') || 
+            (questionData.incorrect_answer_1 == '') || 
+            (questionData.incorrect_answer_2 == '') ||
+            (questionData.incorrect_answer_2 == '')){
+            alert("All fields must be filled to continue"); 
+            return
+        }
+        //If all fields above are filled, set data in the array and change confirmed state to true. 
+        questionDataArray[parseInt(index)] = questionData
+        setQuestionConfirmed(() => true)
     }
 
     console.log(questionData)
@@ -62,7 +76,9 @@ const NewQuestionBox = ({title, category, difficulty, index}) => {
                     <input onChange={handleInputText} id="incorrect_answer_3" type="text" placeholder="Type here" className="input input-bordered w-full max-w-full bg-inherit text-gray-500" />
                 </div>
                 <div className="divider my-2 pb-4 pt-5"></div>
-                <button className="btn btn-secondary">Confirm</button>
+                {!questionConfirmed ? 
+                    <button onClick={handleConfirmQuestion} className="btn btn-secondary">Confirm</button> : 
+                    <span>Confirmed - nice checkmark! </span>}
             </div>
            
         </div>

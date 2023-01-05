@@ -41,23 +41,25 @@ const CreateQuiz = () => {
         setQuizSettings(newSettings)
     }
 
-    // Implementing selected options below, after submitting choices:
-    // I'm going to use this to trigger the card render after the user submits options. 
-    // const [optionsSubmitted, setOptionsSubmitted] = useState(false)
+    // Implementing selected options below, after submitting choices. I'm going to use this to trigger the card render after the user submits options. 
     const [questionFormStack, setQuestionFormStack] = useState([])
 
+    // I want to use a non-stated array to pass information back up from the forms without triggering a render. This will let me handle all of the server actions in this component to, hopefully, avoid any async issues.
+    let questionDataArray
+    // When the options are submitted the array is populated -- to be filled in via forms. Submitting fills the questions Array with 'undefined' to begin. 
     const handleOptionSubmit = () => {
         if((quizSettings.category === "") || (quizSettings.title === "")) alert("You must fill out the title and category to proceed.")
         else {
-            // setOptionsSubmitted(() => !optionsSubmitted)
             //creating an array of equal length to the question count, to return one for each
-            let countArray = [...Array(quizSettings.questionCount)]
-            let newFormStack = countArray.map((q , index) => {
+            questionDataArray = [...Array(quizSettings.questionCount)]
+            console.log(questionDataArray)
+            let newFormStack = questionDataArray.map((q , index) => {
                 return <NewQuestionBox key={`questionBox_${index}`}
                         category={quizSettings.category} 
                         index={index}
                         title={quizSettings.title}
-                        difficulty={quizSettings.difficulty}/>
+                        difficulty={quizSettings.difficulty}
+                        questionDataArray={questionDataArray}/>
             })
             setQuestionFormStack(newFormStack)
         }
@@ -71,15 +73,15 @@ const CreateQuiz = () => {
         questionFormStack.length === 0 ? 
         <div>
             <div className="grid grid-cols-1 w-1/2 relative left-1/4">
-                <span className="text-white relative justify-self-center text-l py-5">{"Hi " + userData.username + ", welcome to create a quiz!"}</span>
+                <span className="text-white relative justify-self-center text-l py-5"></span>
             </div>
             <div className="form-control card w-1/2 relative left-1/4 bg-secondary text-neutral-content border border-white">
-                <h2 className="card-title p-3 self-center text-xl">Create a Quiz!</h2>
+                    <span className="card-title p-3 self-center text-xl">Hi, <span className="text text-primary">{userData.username}</span><span>, welcome to create a quiz!</span></span>
                 <label className="self-center">Select options for your quiz to get started: </label>
                 <div className="divider "></div>
                 <div className="w-2/3 text-center self-center pb-3">
                     <label>Enter a Title:</label>
-                    <input onChange={handleInputText} type="text" placeholder="Type here" className="input input-bordered w-full max-w-full bg-inherit mt-2" />
+                    <input onChange={handleInputText} type="text" placeholder="Type here ..." className="input input-bordered w-full max-w-full bg-inherit mt-2 text-center" />
                 </div>
                 <div className="divider "></div>  {/* Category Select:  */}
                 <div className="w-full text-center self-center pb-3">
