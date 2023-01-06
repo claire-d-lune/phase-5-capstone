@@ -32,22 +32,26 @@ const QuizCard = ({quiz}) => {
         <div className="card md:card-side bg-secondary shadow-xl my-8 max-h-80">
             <figure className="w-1/2"><img src={displayImage} alt="Album"/></figure>
             <div className="card-body w-11/12">
-                <div className="grid grid-cols-3 text-neutral-content">
-                    <Link to={`/quizpage/${quiz.id}`} className="card-title underline relative center-self">{quiz.title}</Link>
-                    <div className="content-center">
-                        <p className="text-s">category: {quiz.category}</p>
-                        <p className="text-s">difficulty: {quiz.questions[0]['difficulty']}</p>
+                <div className="text-neutral-content grid grid-cols-4">
+                    <div className="relative col-span-2">
+                        <Link to={`/quizpage/${quiz.id}`} className="card-title inline-flex underline relative center-self">{quiz.title}</Link>
+                        <div className="content-center">
+                            <p className="text-s inline-flex">category: {quiz.category}</p><br/>
+                            <p className="text-s inline-flex">difficulty: {quiz.questions[0]['difficulty']}</p>
+                        </div>
                     </div>
-                    <div className="grid grid-cols-2 text-center content-center">
-                        <p className='relative text-center'>created by: <p>{quiz.author.username}</p></p>
-                        <label className="btn btn-ghost btn-circle btn-xl avatar">
+                    <div className=" text-center content-center h-full relative -left-8">
+                        <div className='divider divider-horizontal'/>
+                        <p className='relative text-center'>created by:</p>
+                        <p className='text text-primary'>{quiz.author.username}</p>
+                    </div>
+                    <label className="btn btn-ghost btn-circle btn-xl avatar relative left-10">
                             <div className="w-10 rounded-full bg-white">
                                 <img src={ImageCollection[`${quiz.author.image_url}`]} alt="User Image" />
                             </div>
-                        </label> 
-                    </div>
+                    </label> 
                 </div>
-                <div className="divider"></div>
+                <div className="divider my-3 text-white"></div>
                 <span className="w-5/6">{quiz.description}</span>
                 <div className="card-actions my-4">
                     <Link to={`/quizpage/${quiz.id}`} className="btn btn-primary btn-md relative left-1/3">Try Your Luck</Link>

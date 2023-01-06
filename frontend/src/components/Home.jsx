@@ -9,8 +9,7 @@ const Home = () => {
     // The second argument is the function that will perform the fetch and set the data
     const { data } = useQuery({
         queryKey: ["quizzes"], 
-        queryFn: () => axios("/api/quizzes").then(res => res.data), 
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: false
     })
 
     console.log(data)
