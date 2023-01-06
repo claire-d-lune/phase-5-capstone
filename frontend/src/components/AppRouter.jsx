@@ -30,6 +30,19 @@ const AppRouter = () => {
       refetchOnWindowFocus: false
     })
 
+  //I also want to set up my useQuery for 'attempts' here since the data is need in many components and this is the nearest common parent
+  const { data: attemptData} = useQuery({
+    queryKey: ["attempts"], 
+    queryFn: () => axios("/api/attempts").then(res => res.data),
+    refetchOnWindowFocus: false
+  })
+
+  const { data } = useQuery({
+    queryKey: ["quizzes"], 
+    queryFn: () => axios("/api/quizzes").then(res => res.data), 
+    refetchOnWindowFocus: false,
+})
+
   // if user is loading or no user is found, I will display different routes and pages
   if(isLoading) {
     return (

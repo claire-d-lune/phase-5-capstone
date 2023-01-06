@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Leaderboard = () => {
 
+    const { data: attemptData, isLoading } = useQuery(["attempts"])
+    const { data: userData } = useQuery(['allUsers'], () => axios('api/users').then(res => res.data))
+
+    if(isLoading){
+        return <p className='fixed self-center' >Loading...</p>
+    }
 
     return(
         <>

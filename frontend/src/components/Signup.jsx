@@ -18,14 +18,20 @@ const Signup = ({setCurrentUser}) => {
         unicorn: "https://img.freepik.com/free-vector/hand-drawn-unicorn-background_52683-9808.jpg?w=740&t=st=1671749433~exp=1671750033~hmac=4187ef816077d3f3bf7631d6bb5a26693baa937c6204cb2077c006a3344edf85"
     }
 
+    const avatarNames = {
+        viking: 'viking',
+        robot: 'robot',
+        investigator: 'investigator',
+        unicorn: 'unicorn'
+    }
+
     const [displayAvatar, setDisplayAvatar] = useState(avatarImages.robot)
 
     const handleAvatarSelect = (e) => {
         let choice = e.target.value.toLowerCase()
+        console.log()
         setDisplayAvatar(avatarImages[choice])
-        formData.image_url = avatarImages[choice]
-        console.log(e.target.value)
-        console.log(choice)
+        formData.image_url = avatarNames[choice]
     }
 
     const handleFormChange = (e) => {
