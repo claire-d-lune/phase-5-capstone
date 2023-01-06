@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useQuery } from "@tanstack/react-query";
 import NewQuestionBox from "./NewQuestionBox";
 import axios from "axios";
+//To render avatars, etc. :
+import ImageCollection from "../assets/icons/ImageCollection";
 
 const CreateQuiz = () => {
 
-    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", questionCount: 10 , category: "", title: ""})
+    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", questionCount: 10 , category: "", title: "", description: "",  image_url: ""})
     const [difficultyNum, setDifficultyNum] = useState(1)
     const {data: userData} = useQuery(['currentUser'])
     
@@ -25,7 +27,6 @@ const CreateQuiz = () => {
             break
             default: newSettings.questionCount = selection
         }
-
         setQuizSettings(newSettings)
     } 
 
@@ -43,30 +44,61 @@ const CreateQuiz = () => {
 
     // Implementing selected options below, after submitting choices. I'm going to use this to trigger the card render after the user submits options. 
     const [questionFormStack, setQuestionFormStack] = useState([])
-
-    // I want to use a non-stated array to pass information back up from the forms without triggering a render. This will let me handle all of the server actions in this component to, hopefully, avoid any async issues.
-    let questionDataArray
+    // This array below will contain all of the quiz questisons as they are filled out. 
+    const [questionArray, setQuestionArray]  = useState([])
     // When the options are submitted the array is populated -- to be filled in via forms. Submitting fills the questions Array with 'undefined' to begin. 
     const handleOptionSubmit = () => {
         if((quizSettings.category === "") || (quizSettings.title === "")) alert("You must fill out the title and category to proceed.")
         else {
             //creating an array of equal length to the question count, to return one for each
-            questionDataArray = [...Array(quizSettings.questionCount)]
-            console.log(questionDataArray)
-            let newFormStack = questionDataArray.map((q , index) => {
-                return <NewQuestionBox key={`questionBox_${index}`}
-                        category={quizSettings.category} 
-                        index={index}
-                        title={quizSettings.title}
-                        difficulty={quizSettings.difficulty}
-                        questionDataArray={questionDataArray}/>
-            })
-            setQuestionFormStack(newFormStack)
+            let blankQuestionArray = [...Array(quizSettings.questionCount)]
+            console.log(blankQuestionArray)
+            setQuestionArray(blankQuestionArray)
         }
     } 
 
-    console.log(quizSettings)
+    useEffect(() => {
+        let newFormStack = questionArray.map((q , index) => {
+            return <NewQuestionBox key={`questionBox_${index}`}
+                    category={quizSettings.category} 
+                    index={index}
+                    title={quizSettings.title}
+                    difficulty={quizSettings.difficulty}
+                    questionArray={questionArray}
+                    setQuestionArray={setQuestionArray}/>})
+        setQuestionFormStack(newFormStack)
+    }, [questionArray]);
 
+    // Submit function for the quiz itself: 
+    const submitQuiz = () => {
+        //filtering for filled entries to confirm every question has been filled in. 
+        let postQuestions = questionArray.filter(n => n)
+        if (postQuestions.length != questionArray.length) {
+            alert('You must fill out each question for proceed')
+            return
+        } 
+        axios.post('/api/quizzes', {
+            author_id: userData.id,
+            title: quizSettings.title,
+            category: quizSettings.category,
+            description: quizSettings.description,
+            image_url: quizSettings.image_url
+        })
+        .then((res) => {
+            let quizId = res.data.id
+            postQuestions.forEach((question) => {
+                // Post each Question: 
+                axios.post('api/questions', {...question})
+                .then(res => {
+                    let questionId = res.data.id
+                    //Link data via quiz questions link table
+                    axios.post('/api/quiz_questions', {question_id: questionId, quiz_id: quizId, weight: 1})
+                    .then(res => console.log(res.data))
+                })
+            })
+        })
+    }
+     
     return (
         // If the question stack has not been populated I will display an options form
         // If the stack *has* been populated (this takes place after options are submitted), then I will instead render the stack of forms and a button to submit the quiz. 
@@ -78,7 +110,7 @@ const CreateQuiz = () => {
             <div className="form-control card w-1/2 relative left-1/4 bg-secondary text-neutral-content border border-white">
                     <span className="card-title p-3 self-center text-xl">Hi, <span className="text text-primary">{userData.username}</span><span>, welcome to create a quiz!</span></span>
                 <label className="self-center">Select options for your quiz to get started: </label>
-                <div className="divider "></div>
+                <div className="divider"></div>
                 <div className="w-2/3 text-center self-center pb-3">
                     <label>Enter a Title:</label>
                     <input onChange={handleInputText} type="text" placeholder="Type here ..." className="input input-bordered w-full max-w-full bg-inherit mt-2 text-center" />
@@ -115,8 +147,9 @@ const CreateQuiz = () => {
                 <div className="divider"></div> {/* Question Count Slider:  */}
                 <div className="w-2/3 text-center self-center">
                     <label>Select Number of Questions: </label>
-                    <input onChange={handleSlider} value={quizSettings.questionCount} type="range" min="10" max="30" className="range" step="5" />
+                    <input onChange={handleSlider} value={quizSettings.questionCount} type="range" min="5" max="30" className="range" step="5" />
                     <div className="w-full flex justify-between text-xs px-2">
+                        <span>5</span>
                         <span>10</span>
                         <span>15</span>
                         <span>20</span>
@@ -131,10 +164,20 @@ const CreateQuiz = () => {
         :
         <div className="grid grid-cols-1 w-1/2 relative left-1/4">
             {questionFormStack}
-            <button className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>
+            <button onClick={submitQuiz} className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>
         </div>
     )
 
+
+
+    //Some helper functions for the posts, to clean up and clarify the main section. I will return to this. I have to focus on MVP today. 
+    // const postQuestion = (author_id) => {
+
+    // }
+
+    // const postQuizQuestion = () => {
+
+    // }
 }
 
 export default CreateQuiz;

@@ -7,8 +7,7 @@ const QuestionBox = ({number, question, quizResults, choices}) => {
         e.target.id === question.correct_answer ? quizResults[number - 1] = true : quizResults[number - 1] = false
         console.log(quizResults)
     }
-    //assign answers to array and use a shuffle so the correct choice is not predictable. 
-    // let choices = [question.correct_answer, question.incorrect_answer_1, question.incorrect_answer_2, question.incorrect_answer_3]
+
     //shuffling the order of the the possible answers below:
     choices.sort((a, b) => 0.5 - Math.random())
     

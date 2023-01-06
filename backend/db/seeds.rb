@@ -1065,6 +1065,39 @@ easy_array = Question.all.where(category: "Film").where(difficulty: "easy")
 medium_array = Question.all.where(category: "Film").where(difficulty: "medium")
 hard_array = Question.all.where(category: "Film").where(difficulty: "hard")
 
+## I will use these
+image_container =  {
+    astronaut: 'astronaut',
+    globe: 'globe',
+    bear: 'bear',
+    cowgirl: 'cowgirl',
+    horse: 'horse',
+    cactus: 'cactus',
+    poncho: 'poncho',
+    sheriff: 'sheriff',
+    boot: 'boot',
+    eagle: 'eagle',
+    kerchief: 'kerchief',
+    whiskey: 'whiskey',
+    gallows: 'gallows',
+    wagon: 'wagon',
+    coffin: 'coffin',
+    bonfire: 'bonfire',
+    cowboy: 'cowboy',
+    skull_1: 'skull_1',
+    saloon: 'saloon',
+    skull: 'skull',
+    native_american: 'native_american',
+    tent: 'tent',
+    native_american_1: 'native_american_1',
+    cowboy_hat: 'cowboy_hat',
+    water_tower: 'water_tower',
+    viking: "https://img.freepik.com/free-vector/viking-character-ancient-scandinavian-warrior-with-sword-wooden-shield-with-snake-emblem-vector-cartoon-illustration-medieval-barbarian-horned-helmet-isolated-background_107791-9242.jpg?w=900&t=st=1671749509~exp=1671750109~hmac=a7aea410c42302f21d6a2f64fd8576a81000bbb35a67d92d9e5686f1f8b034dc",
+    robot: "https://img.freepik.com/free-vector/vintage-robot-toy-white-background_1308-77501.jpg?w=2000",
+    investigator: "https://img.freepik.com/free-photo/cozy-portrait-young-woman-knitted-blue-sweater-pink-hat-with-bright-makeup-holding-magnifying-glass-fooling-around-having-fun_343596-7383.jpg?w=1060&t=st=1671749585~exp=1671750185~hmac=cfbff7056a03c5e98e6a34297a4be9a734bff756d191eb8a67b58865f1dfef30",
+    unicorn: "https://img.freepik.com/free-vector/hand-drawn-unicorn-background_52683-9808.jpg?w=740&t=st=1671749433~exp=1671750033~hmac=4187ef816077d3f3bf7631d6bb5a26693baa937c6204cb2077c006a3344edf85"
+}
+
 
 question_count  = 0 
 
@@ -1099,6 +1132,7 @@ end
 end
 
 User.all.each do |u|
+    User.update(image_url: image_container.to_a.sample[1])
     15.times do
         Attempt.create(quiz_id: Quiz.all.sample.id, user_id: u.id, score: Faker::Number.between(from: 1, to: 10))
     end
