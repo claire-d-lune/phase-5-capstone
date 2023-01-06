@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 
-const NewQuestionBox = ({title, category, difficulty, index, questionDataArray}) => {
+const NewQuestionBox = ({title, category, difficulty, index, questionArray, setQuestionArray}) => {
+
+    console.log(questionArray)
 
     // I want to use state to record whether or not each question is locked in. When it is, I will pass the question up to an array on the quizpage. 
     const [questionData, setQuestionData] = useState({
@@ -31,17 +33,17 @@ const NewQuestionBox = ({title, category, difficulty, index, questionDataArray})
             return
         }
         //If all fields above are filled, set data in the array and change confirmed state to true. 
-        questionDataArray[parseInt(index)] = questionData
+        let tempQuestionArray = [...questionArray]
+        tempQuestionArray[parseInt(index)] = questionData
         setQuestionConfirmed(() => true)
+        setQuestionArray(tempQuestionArray)
     }
-
-    // console.log(questionData)
 
     return (
         <div className="card w-full place-self-center bg-white text-neutral-content my-4">
             <div className="card-body items-center text-left pt-4">
                 <h2 className="card-title text-l text-gray-500">{title}</h2>
-                <div className="divider my-2">{index + 1}</div>
+                <div className="divider my-2">{index + 1} / {questionArray.length}</div>
                 <label className="text-gray-500">Category:</label>
                 <p  className="text-gray-500">{category}</p>
                 {/* Enter Question Details: */}
@@ -78,9 +80,8 @@ const NewQuestionBox = ({title, category, difficulty, index, questionDataArray})
                 <div className="divider my-2 pb-4 pt-5"></div>
                 {!questionConfirmed ? 
                     <button onClick={handleConfirmQuestion} className="btn btn-secondary">Confirm</button> : 
-                    <span>Confirmed - nice checkmark! </span>}
+                    <embed className="w-1/6 h-auto" src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Eo_circle_green_checkmark.svg" alt='✅'/>}
             </div>
-           
         </div>
 
     )

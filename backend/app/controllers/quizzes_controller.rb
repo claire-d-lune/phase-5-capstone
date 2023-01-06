@@ -29,11 +29,17 @@ class QuizzesController < ApplicationController
         end
     end
 
+    def create
+        quiz = Quiz.create!(quiz_params)
+        render json: quiz, status: :created
+    end
+
 
     private 
 
     def quiz_params 
         params.permit(
+            :category,
             :title,
             :description,
             :image_url,

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import ImageCollection from "../../assets/icons/ImageCollection";
 
 const Seedmaker = () => {
 
 
+  console.log(ImageCollection[0])
   // let infoStack = []
 
   // let counter = 0
@@ -44,6 +46,7 @@ const Seedmaker = () => {
 
   return (
     <div>
+        <img src={ImageCollection.astronaut}/>
         <div class="radial-progress" style={{"--value":70}}>70%</div>
         {infoStack}
     </div>
