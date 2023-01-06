@@ -35,31 +35,7 @@ user2 = User.create(
 
 ## Film, difficulty: easy ##
 
-## Film::medium
-  
-film_medium_1  = Question.create(category: "Film", format: "multiple", question: "Which of the following James Bond villains is not affiliated with the SPECTRE organization?", correct_answer: "Auric Goldfinger", difficulty: "medium", incorrect_answer_1: "Dr. Julius No", incorrect_answer_2: "Rosa Klebb", incorrect_answer_3: "Emilio Largo")
-film_medium_2  = Question.create(category: "Film", format: "multiple", question: "Who played Batman in the 1997 film &quot;Batman and Robin&quot;?", correct_answer: "George Clooney", difficulty: "medium", incorrect_answer_1: "Michael Keaton", incorrect_answer_2: "Val Kilmer", incorrect_answer_3: "Christian Bale")
-film_medium_3  = Question.create(category: "Film", format: "multiple", question: "This movie contains the quote, &quot;I love the smell of napalm in the morning!&quot;", correct_answer: "Apocalypse Now", difficulty: "medium", incorrect_answer_1: "Platoon", incorrect_answer_2: "The Deer Hunter", incorrect_answer_3: "Full Metal Jacket")
-film_medium_4  = Question.create(category: "Film", format: "multiple", question: "Who plays the Nemesis in the Resident Evil movies?", correct_answer: "Matthew Taylor", difficulty: "medium", incorrect_answer_1: "Jason Dip", incorrect_answer_2: "Eric Mabius", incorrect_answer_3: "Jimmy Matts")
-film_medium_5  = Question.create(category: "Film", format: "multiple", question: "Darth Vader&#039;s famous reveal to Luke is iconic. But which of these is the right one?", correct_answer: "&quot;No. I am your father.&quot;", difficulty: "medium", incorrect_answer_1: "&quot;Luke, I am your father.&quot;", incorrect_answer_2: "&quot;You&#039;re wrong. I am your father.&quot;", incorrect_answer_3: "&quot;The truth is that I am your father.&quot;")
-film_medium_6  = Question.create(category: "Film", format: "multiple", question: "This trope refers to minor characters that are killed off to show how a monster works.", correct_answer: "Red Shirt", difficulty: "medium", incorrect_answer_1: "Minions", incorrect_answer_2: "Expendables", incorrect_answer_3: "Cannon Fodder")
-film_medium_7  = Question.create(category: "Film", format: "multiple", question: "What type of cheese, loved by Wallace and Gromit, had it&#039;s sale prices rise after their successful short films?", correct_answer: "Wensleydale", difficulty: "medium", incorrect_answer_1: "Cheddar", incorrect_answer_2: "Moon Cheese", incorrect_answer_3: "Edam")
-film_medium_8  = Question.create(category: "Film", format: "multiple", question: "In the Friday The 13th series, what is Jason&#039;s mother&#039;s first name?", correct_answer: "Pamela", difficulty: "medium", incorrect_answer_1: "Mary", incorrect_answer_2: "Christine", incorrect_answer_3: "Angeline")
-film_medium_9  = Question.create(category: "Film", format: "multiple", question: "After India, which country produces the second most movies per year?", correct_answer: "Nigeria", difficulty: "medium", incorrect_answer_1: "United States", incorrect_answer_2: "China", incorrect_answer_3: "France")
-film_medium_0  = Question.create(category: "Film", format: "multiple", question: "What is the name of the foley artist who designed the famous sounds of Star Wars, including Chewbacca&#039;s roar and R2-D2&#039;s beeps and whistles?", correct_answer: "Ben Burtt", difficulty: "medium", incorrect_answer_1: "Ken Burns", incorrect_answer_2: "Ralph McQuarrie", incorrect_answer_3: "Miranda Keyes")
 
-film_quiz_med = Quiz.create(category: "Film", title: "Film quiz number 1", author_id: user1.id, description: "First film quiz!!")
-
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_1.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_2.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_3.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_4.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_5.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_6.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_7.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_8.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_9.id,  weight: 1)
-QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_0.id,  weight: 1)
 
 ## Video Games::Easy
 
@@ -1065,6 +1041,32 @@ easy_array = Question.all.where(category: "Film").where(difficulty: "easy")
 medium_array = Question.all.where(category: "Film").where(difficulty: "medium")
 hard_array = Question.all.where(category: "Film").where(difficulty: "hard")
 
+## Film::medium
+  
+film_medium_1  = Question.create(category: "Film", format: "multiple", question: "Which of the following James Bond villains is not affiliated with the SPECTRE organization?", correct_answer: "Auric Goldfinger", difficulty: "medium", incorrect_answer_1: "Dr. Julius No", incorrect_answer_2: "Rosa Klebb", incorrect_answer_3: "Emilio Largo")
+film_medium_2  = Question.create(category: "Film", format: "multiple", question: "Who played Batman in the 1997 film &quot;Batman and Robin&quot;?", correct_answer: "George Clooney", difficulty: "medium", incorrect_answer_1: "Michael Keaton", incorrect_answer_2: "Val Kilmer", incorrect_answer_3: "Christian Bale")
+film_medium_3  = Question.create(category: "Film", format: "multiple", question: "This movie contains the quote, &quot;I love the smell of napalm in the morning!&quot;", correct_answer: "Apocalypse Now", difficulty: "medium", incorrect_answer_1: "Platoon", incorrect_answer_2: "The Deer Hunter", incorrect_answer_3: "Full Metal Jacket")
+film_medium_4  = Question.create(category: "Film", format: "multiple", question: "Who plays the Nemesis in the Resident Evil movies?", correct_answer: "Matthew Taylor", difficulty: "medium", incorrect_answer_1: "Jason Dip", incorrect_answer_2: "Eric Mabius", incorrect_answer_3: "Jimmy Matts")
+film_medium_5  = Question.create(category: "Film", format: "multiple", question: "Darth Vader&#039;s famous reveal to Luke is iconic. But which of these is the right one?", correct_answer: "&quot;No. I am your father.&quot;", difficulty: "medium", incorrect_answer_1: "&quot;Luke, I am your father.&quot;", incorrect_answer_2: "&quot;You&#039;re wrong. I am your father.&quot;", incorrect_answer_3: "&quot;The truth is that I am your father.&quot;")
+film_medium_6  = Question.create(category: "Film", format: "multiple", question: "This trope refers to minor characters that are killed off to show how a monster works.", correct_answer: "Red Shirt", difficulty: "medium", incorrect_answer_1: "Minions", incorrect_answer_2: "Expendables", incorrect_answer_3: "Cannon Fodder")
+film_medium_7  = Question.create(category: "Film", format: "multiple", question: "What type of cheese, loved by Wallace and Gromit, had it&#039;s sale prices rise after their successful short films?", correct_answer: "Wensleydale", difficulty: "medium", incorrect_answer_1: "Cheddar", incorrect_answer_2: "Moon Cheese", incorrect_answer_3: "Edam")
+film_medium_8  = Question.create(category: "Film", format: "multiple", question: "In the Friday The 13th series, what is Jason&#039;s mother&#039;s first name?", correct_answer: "Pamela", difficulty: "medium", incorrect_answer_1: "Mary", incorrect_answer_2: "Christine", incorrect_answer_3: "Angeline")
+film_medium_9  = Question.create(category: "Film", format: "multiple", question: "After India, which country produces the second most movies per year?", correct_answer: "Nigeria", difficulty: "medium", incorrect_answer_1: "United States", incorrect_answer_2: "China", incorrect_answer_3: "France")
+film_medium_0  = Question.create(category: "Film", format: "multiple", question: "What is the name of the foley artist who designed the famous sounds of Star Wars, including Chewbacca&#039;s roar and R2-D2&#039;s beeps and whistles?", correct_answer: "Ben Burtt", difficulty: "medium", incorrect_answer_1: "Ken Burns", incorrect_answer_2: "Ralph McQuarrie", incorrect_answer_3: "Miranda Keyes")
+
+film_quiz_med = Quiz.create(category: "Film", title: "Film quiz number 1", author_id: user1.id, description: "First film quiz!!")
+
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_1.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_2.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_3.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_4.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_5.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_6.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_7.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_8.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_9.id,  weight: 1)
+QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_0.id,  weight: 1)
+
 ## I will use these
 image_container =  {
     astronaut: 'astronaut',
@@ -1128,11 +1130,11 @@ end
         username: Faker::Internet.username, 
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        password_digest: "$2a$12$0yPXp0QdIpMOdlwp6OvAk.W2KPRjD0q2gX7txK24b/eE4Y9MCg8UO")
+        password_digest: "$2a$12$0yPXp0QdIpMOdlwp6OvAk.W2KPRjD0q2gX7txK24b/eE4Y9MCg8UO",
+        image_url: image_container.to_a.sample[1])
 end
 
 User.all.each do |u|
-    User.update(image_url: image_container.to_a.sample[1])
     15.times do
         Attempt.create(quiz_id: Quiz.all.sample.id, user_id: u.id, score: Faker::Number.between(from: 1, to: 10))
     end
