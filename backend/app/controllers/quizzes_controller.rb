@@ -1,7 +1,7 @@
 class QuizzesController < ApplicationController
 
     def index
-        render json: Quiz.all, status: :ok
+        render json: Quiz.all.order(:id), status: :ok
     end
 
     def show

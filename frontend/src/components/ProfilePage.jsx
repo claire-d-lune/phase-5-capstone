@@ -1,17 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query'
+import AttemptRecordCard from "./AttemptRecordCard";
+import ImageCollection from "../assets/icons/ImageCollection";
 
 const ProfilePage = () => {
 
+    const {data: quizData} = useQuery(['quizzes'])
+    const {data: attemptData } = useQuery({queryKey: ['attempts'],refetchOnWindowFocus: false})
     const {data: userData} = useQuery(['currentUser'])
+    const [myAttempts, setMyAttempts] = useState([])
 
+    const [attemptHistoryVisible, setAttemptHistoryVisible] = useState(false)
+    const toggleDisplayHistory = () => setAttemptHistoryVisible(() => !attemptHistoryVisible)
+    
+    
+    
     let pointTotal = 0
     //Totalling the score from all attempts. 
     userData?.attempts.forEach((attempt) => {
         pointTotal = pointTotal + attempt.score
     })
 
-    console.log(userData)
+    //using a function to filter down to only current user. I would have prefered to do this in the API, but I have to move quickly RN
+    useEffect(() => {
+        let toFilter = []
+        if(attemptData){
+            toFilter = [...attemptData]
+            setMyAttempts(() => toFilter.filter((attempt) => attempt.user.id == userData.id))
+        }
+    }, [attemptData]);
+
+    //Create a card to represent each attempt: 
+    const attemptStack = myAttempts.map((attempt, index) => {
+        let quiz = quizData.find(n => n.id == attempt.quiz.id)
+        console.log(quiz)
+        return <AttemptRecordCard 
+                key={`${userData.username}_attempt_${index}`}
+                user={attempt.user}
+                quiz={quiz}
+                score={attempt.score}/>
+    })
+
+    console.log(quizData)
 
     return (
         <>
@@ -34,7 +64,7 @@ const ProfilePage = () => {
                 <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                         <div className="relative">
-                            <img alt="..." src={userData.image_url} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
+                            <img alt="..." src={ImageCollection[`${userData.image_url}`]} className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
                         </div>
                     </div>
                     <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-left lg:self-center">
@@ -70,7 +100,7 @@ const ProfilePage = () => {
                     <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">{userData.username}</h3>
                     <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                    Los Angeles, California
+                    Denver, Colorado
                     </div>
                     <div className="mb-2 text-blueGray-600 mt-10">
                     <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>First Name
@@ -88,13 +118,14 @@ const ProfilePage = () => {
                         <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                         Mi quis hendrerit dolor magna eget est lorem. Amet luctus venenatis lectus magna. Congue nisi vitae suscipit tellus mauris. Viverra nam libero justo laoreet. Tempus egestas sed sed risus pretium quam. Cras sed felis eget velit aliquet. Nisl pretium fusce id velit ut tortor. Justo eget magna fermentum iaculis eu non diam phasellus vestibulum. Nisl pretium fusce id velit ut tortor. At quis risus sed vulputate odio ut. Sapien eget mi proin sed libero enim. 
                         </p>
-                        <a className="font-normal text-pink-500">Show more</a>
+                        <p onClick={toggleDisplayHistory} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500">Show attempt history </p>
                     </div>
                     </div>
                 </div>
                 </div>
             </div>
             </div>
+            {attemptHistoryVisible ? <div>{attemptStack}</div> : null}
         </section>
         </>)
 }

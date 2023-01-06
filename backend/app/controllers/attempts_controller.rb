@@ -14,11 +14,6 @@ class AttemptsController < ApplicationController
         render json: attempt, status: :created
     end
 
-    def update 
-    
-    end
-
-
     private 
 
     def attempt_params 

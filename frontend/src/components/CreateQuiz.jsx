@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useQuery } from "@tanstack/react-query";
 import NewQuestionBox from "./NewQuestionBox";
 import axios from "axios";
-//To render avatars, etc. :
-import ImageCollection from "../assets/icons/ImageCollection";
+
 
 const CreateQuiz = () => {
 

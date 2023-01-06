@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//To render avatars, etc. :
+import ImageCollection from "../assets/icons/ImageCollection";
 
 const QuizCard = ({quiz}) => {
 
@@ -30,29 +32,29 @@ const QuizCard = ({quiz}) => {
         <div className="card md:card-side bg-secondary shadow-xl my-8 max-h-80">
             <figure className="w-1/2"><img src={displayImage} alt="Album"/></figure>
             <div className="card-body w-11/12">
-                <div className="grid grid-cols-3">
-                    <Link to={`/quizpage/${quiz.id}`} className="card-title underline text-neutral-content relative">{quiz.title}</Link>
-                    <div className="text-center ">
-                        <p className="text-s">category: {quiz.category}</p>
-                        <p className="text-s">difficulty: {quiz.questions[0]['difficulty']}</p>
+                <div className="text-neutral-content grid grid-cols-4">
+                    <div className="relative col-span-2">
+                        <Link to={`/quizpage/${quiz.id}`} className="card-title inline-flex underline relative center-self">{quiz.title}</Link>
+                        <div className="content-center">
+                            <p className="text-s inline-flex">category: {quiz.category}</p><br/>
+                            <p className="text-s inline-flex">difficulty: {quiz.questions[0]['difficulty']}</p>
+                        </div>
                     </div>
-                    <div className="grid grid-cols-2 text-center">
-                        <p className='relative text-center'>created by: <p>{quiz.author.username}</p></p>
-                        <label className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={quiz.author.image_url} alt="User Image" />
+                    <div className=" text-center content-center h-full relative -left-8">
+                        <div className='divider divider-horizontal'/>
+                        <p className='relative text-center'>created by:</p>
+                        <p className='text text-primary'>{quiz.author.username}</p>
+                    </div>
+                    <label className="btn btn-ghost btn-circle btn-xl avatar relative left-10">
+                            <div className="w-10 rounded-full bg-white">
+                                <img src={ImageCollection[`${quiz.author.image_url}`]} alt="User Image" />
                             </div>
-                        </label> 
-                    </div>
+                    </label> 
                 </div>
-                {/* <div className="justify-between">
-                    <span className="text-s">category: {quiz.category}</span>
-                    <span className="text-s relative left-20">difficulty: {quiz.questions[0]['difficulty']}</span>
-                </div> */}
-                <div className="divider"></div>
+                <div className="divider my-3 text-white"></div>
                 <span className="w-5/6">{quiz.description}</span>
                 <div className="card-actions my-4">
-                    <Link to={`/quizpage/${quiz.id}`} className="btn btn-primary btn-md align-self-end relative left-10">Try Your Luck</Link>
+                    <Link to={`/quizpage/${quiz.id}`} className="btn btn-primary btn-md relative left-1/3">Try Your Luck</Link>
                 </div>
             </div>
         </div>

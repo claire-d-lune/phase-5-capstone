@@ -9,9 +9,10 @@ const Home = () => {
     // The second argument is the function that will perform the fetch and set the data
     const { data } = useQuery({
         queryKey: ["quizzes"], 
-        queryFn: () => axios("/api/quizzes").then(res => res.data), 
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: false
     })
+
+    console.log(data)
 
     //Creating search and the filters (category and difficulty)
     const [selectedCategory, setCategory] = useState("all")
@@ -39,7 +40,7 @@ const Home = () => {
     categoryOptions = [...new Set(categoryOptions)]         // eliminate duplicates
     categoryOptions = categoryOptions.map((category) => {   // create actual JSX element from each option
         return  <li key={category + "_li"}>
-                    <p onClick={handleCategorySelect} id={category}> {category} </p>
+                    <p onClick={handleCategorySelect} id={category}> {category}</p>
                 </li>
     })
 

@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link, useNavigate} from "react-router-dom";
 import puzzleIcon from "../assets/icons/jigsaws/png/027-puzzle-18.png";
+import ImageCollection from "../assets/icons/ImageCollection";
  
 const Navbar = ({user, setCurrentUser}) => {
   
@@ -49,7 +50,7 @@ const Navbar = ({user, setCurrentUser}) => {
           <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src={user.image_url} alt="User Image" />
+              <img src={ImageCollection[`${user.image_url}`]} alt="User Image" />
             </div>
           </label>
           <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
@@ -59,40 +60,13 @@ const Navbar = ({user, setCurrentUser}) => {
                 {/* <span className="badge">New</span> */}
               </Link>
             </li>
-            <li><a>Settings</a></li>
+            {/* <li><a>Settings</a></li> */}
             <li><a onClick={handleLogout}>Logout</a></li>
             <li><Link to="/create_quiz">Create a Quiz</Link></li>
           </ul>
        </div>
         </div>
       </div>
-        // <div className="navbar bg-base-100">
-        //   <div className="flex-1">
-        //     <a className="btn btn-ghost normal-case text-xl">Quizzler 2.0</a>
-        //   </div>
-        //   <div className="flex-none gap-2">
-        //     <div className="form-control">
-        //       <input type="text" placeholder="Search" className="input input-bordered" />
-        //     </div>
-        //     <div className="dropdown dropdown-end">
-        //       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        //         <div className="w-10 rounded-full">
-        //           <img src="https://placeimg.com/80/80/people" />
-        //         </div>
-        //       </label>
-        //       <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-        //         <li>
-        //           <a className="justify-between">
-        //             Profile
-        //             <span className="badge">New</span>
-        //           </a>
-        //         </li>
-        //         <li><a>Settings</a></li>
-        //         <li><a>Logout</a></li>
-        //       </ul>
-        //     </div>
-        //   </div>
-        // </div>
     )
 }
 
