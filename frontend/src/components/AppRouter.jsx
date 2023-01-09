@@ -18,8 +18,13 @@ import CreateQuiz from "./CreateQuiz";
 const AppRouter = () => {
 
   const [currentUser, setCurrentUser] = useState("")
+
+  // Setting up useQuery
+  // In the first argument we are naming a query key for the data we are fetching in order to refetch or reference the data from other components.  
+  // The second argument is the function that will perform the fetch and set the data
+
   //Fetching my session data for current user: 
-  const {data: userData, isLoading, isError} = useQuery({
+  const {data: userData, isLoading} = useQuery({
       queryKey: ["currentUser"], 
       queryFn: () => axios.get("/api/me")
                     .then(res => res.data)
@@ -29,19 +34,18 @@ const AppRouter = () => {
                     }),
       refetchOnWindowFocus: false
     })
-
-  //I also want to set up my useQuery for 'attempts' here since the data is need in many components and this is the nearest common parent
-  const { data: attemptData} = useQuery({
+  //I also want to set up my useQuery for 'attempts' here since the data is needed in many components and this is the nearest common parent
+  useQuery({
     queryKey: ["attempts"], 
     queryFn: () => axios("/api/attempts").then(res => res.data),
     refetchOnWindowFocus: false
   })
 
-  const { data } = useQuery({
+  useQuery({
     queryKey: ["quizzes"], 
     queryFn: () => axios("/api/quizzes").then(res => res.data), 
     refetchOnWindowFocus: false,
-})
+  })
 
   // if user is loading or no user is found, I will display different routes and pages
   if(isLoading) {

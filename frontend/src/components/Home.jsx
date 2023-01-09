@@ -4,15 +4,11 @@ import QuizCard from "./QuizCard";
 import axios from "axios";
 
 const Home = () => {
-    // Setting up useQuery
-    // In the first argument we are naming/identifying the specific data we are fetching here in order to reference it later for refetch, etc.
-    // The second argument is the function that will perform the fetch and set the data
+   
     const { data } = useQuery({
         queryKey: ["quizzes"], 
         refetchOnWindowFocus: false
     })
-
-    console.log(data)
 
     //Creating search and the filters (category and difficulty)
     const [selectedCategory, setCategory] = useState("all")

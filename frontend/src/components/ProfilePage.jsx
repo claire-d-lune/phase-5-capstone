@@ -13,8 +13,6 @@ const ProfilePage = () => {
     const [attemptHistoryVisible, setAttemptHistoryVisible] = useState(false)
     const toggleDisplayHistory = () => setAttemptHistoryVisible(() => !attemptHistoryVisible)
     
-    
-    
     let pointTotal = 0
     //Totalling the score from all attempts. 
     userData?.attempts.forEach((attempt) => {
