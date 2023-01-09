@@ -33,7 +33,7 @@ const AttemptRecordCard = ({user, quiz, score}) => {
                 <div className="grid grid-cols-2 text-neutral-content">
                     <div>
                         <span>Your score: </span>
-                        <span className="text text-3xl text-green-500 pl-6" >{score}</span>
+                        <span className="text text-3xl text-green-500 pl-6" >{score}/{quiz.question_count}</span>
                         <div className="card-actions my-4">
                         <Link to={`/quizpage/${quiz.id}`} className="btn btn-primary btn-md relative left-1/3">Try Again? </Link>
                         </div>

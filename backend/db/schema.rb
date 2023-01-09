@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_192107) do
     t.string "description"
     t.string "image_url"
     t.integer "author_id"
-    t.integer "length"
+    t.integer "question_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
