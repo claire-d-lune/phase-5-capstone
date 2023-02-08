@@ -25,8 +25,6 @@ const QuizCard = ({quiz}) => {
         default : displayImage = categoryImages.default;
         // I am storing the original default link here in this comment, in case I end up preffering it as a default "https://placeimg.com/400/400/arch"
     }
-
-    
     
     return (
         <div className="card md:card-side bg-secondary shadow-xl my-8 max-h-80">
@@ -37,7 +35,7 @@ const QuizCard = ({quiz}) => {
                         <Link to={`/quizpage/${quiz.id}`} className="card-title inline-flex underline relative center-self">{quiz.title}</Link>
                         <div className="content-center">
                             <p className="text-s inline-flex">category: {quiz.category}</p><br/>
-                            <p className="text-s inline-flex">difficulty: {quiz.questions[0]['difficulty']}</p>
+                            <p className="text-s inline-flex">difficulty: {quiz.difficulty}</p>
                         </div>
                     </div>
                     <div className=" text-center content-center h-full relative -left-8">

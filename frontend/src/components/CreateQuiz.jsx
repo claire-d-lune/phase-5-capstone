@@ -6,9 +6,11 @@ import axios from "axios";
 
 const CreateQuiz = () => {
 
-    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", length: 10 , category: "", title: "", description: "",  image_url: ""})
-    const [difficultyNum, setDifficultyNum] = useState(1)
     const {data: userData} = useQuery(['currentUser'])
+    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", length: 10 , category: "", title: "", description: "",  image_url: "", author_id: userData.id})
+    const [difficultyNum, setDifficultyNum] = useState(1)
+    
+    console.log(quizSettings)
     
     //Event handlers for forms. 
     const handleSlider = (e) => {   
@@ -51,7 +53,6 @@ const CreateQuiz = () => {
         else {
             //creating an array of equal length to the question count, to return one for each
             let blankQuestionArray = [...Array(quizSettings.length)]
-            console.log(blankQuestionArray)
             setQuestionArray(blankQuestionArray)
         }
     } 

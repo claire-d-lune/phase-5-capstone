@@ -91,7 +91,7 @@ vg_easy_48 = Question.create(category: "Video Games", format: "multiple", questi
 vg_easy_49 = Question.create(category: "Video Games", format: "multiple", question: "Which psychopath(s) in Dead Rising 1 gave you the small chainsaw?", correct_answer: "Adam the Clown", difficulty: "easy", incorrect_answer_1: "Cliff Hudson", incorrect_answer_2: "The convicts", incorrect_answer_3: "Larry the butcher")
 
 
-vg_quiz_easy1 = Quiz.create(question_count: 10, category: "Video Games", title: " Enter the Bit-Bowl ", author_id: user1.id)
+vg_quiz_easy1 = Quiz.create(difficulty: "easy",question_count: 10, category: "Video Games", title: " Enter the Bit-Bowl ", author_id: user1.id)
 
 QuizQuestion.create(quiz_id: vg_quiz_easy1.id, question_id: vg_easy_0.id, weight: 1)
 QuizQuestion.create(quiz_id: vg_quiz_easy1.id, question_id: vg_easy_1.id, weight: 1)
@@ -158,7 +158,7 @@ vg_medium_47 = Question.create(category: "Video Games", format: "multiple", ques
 vg_medium_48 = Question.create(category: "Video Games", format: "multiple", question: "How many stars are there to collect in Super Mario 64?", correct_answer: "120", difficulty: "medium", incorrect_answer_1: "60", incorrect_answer_2: "80", incorrect_answer_3: "100")
 vg_medium_49 = Question.create(category: "Video Games", format: "multiple", question: "In the video game DOTA 2, which of these is NOT a hero?", correct_answer: "Dragon Champion", difficulty: "medium", incorrect_answer_1: "Dark Seer", incorrect_answer_2: "Keeper of the Light", incorrect_answer_3: "Mirana")
 
-vg_quiz_med1 = Quiz.create(question_count: 10, category: "Video Games", title: " Time to Level Up ", author_id: user1.id)
+vg_quiz_med1 = Quiz.create(difficulty: "medium", question_count: 10, category: "Video Games", title: " Time to Level Up ", author_id: user1.id)
 
 QuizQuestion.create(quiz_id: vg_quiz_med1.id, question_id: vg_medium_0.id, weight: 1)
 QuizQuestion.create(quiz_id: vg_quiz_med1.id, question_id: vg_medium_1.id, weight: 1)
@@ -224,7 +224,7 @@ vg_hard_48 = Question.create(category: "Video Games", format: "multiple", questi
 vg_hard_49 = Question.create(category: "Video Games", format: "multiple", question: "In Terraria, which debuff does the ankh charm not provide immunity to?", correct_answer: "Venom", difficulty: "hard", incorrect_answer_1: "Cursed", incorrect_answer_2: "Bleeding", incorrect_answer_3: "Slow")
 
 
-vg_quiz_hard1 = Quiz.create(question_count: 10, category: "Video Games", title: "For the 8-bit Archivist", author_id: user1.id)
+vg_quiz_hard1 = Quiz.create(difficulty: "hard" , question_count: 10, category: "Video Games", title: "For the 8-bit Archivist", author_id: user1.id)
 
 
 QuizQuestion.create(quiz_id: vg_quiz_hard1.id, question_id: vg_hard_0.id, weight: 1)
@@ -404,9 +404,9 @@ history_hard_47 = Question.create(category: "History", format: "multiple", quest
 history_hard_48 = Question.create(category: "History", format: "multiple", question: "Which country did the Eureka Rebellion, an 1856 battle against colonial rule, take place in?", correct_answer: "Australia", difficulty: "hard", incorrect_answer_1: "India", incorrect_answer_2: "Canada", incorrect_answer_3: "Brazil")
 history_hard_49 = Question.create(category: "History", format: "multiple", question: "What is the name of the Boeing B-29 that dropped the &#039;Little Boy&#039; atomic bomb on Hiroshima?", correct_answer: "Enola Gay", difficulty: "hard", incorrect_answer_1: "Necessary Evil", incorrect_answer_2: "The Great Artiste", incorrect_answer_3: "Full House")
 
-history_quiz_easy1 = Quiz.create(question_count: 10, category: "History", title: "Does this belong in a museum?", author_id: user1.id)
-history_quiz_medium1 = Quiz.create(question_count: 10, category: "History", title: "This probably belongs in a museum ... ", author_id: user1.id)
-history_quiz_hard1 = Quiz.create(question_count: 10, category: "History", title: "This Belongs in a museum!!", author_id: user1.id)
+history_quiz_easy1 = Quiz.create(difficulty: "easy", question_count: 10, category: "History", title: "Does this belong in a museum?", author_id: user1.id)
+history_quiz_medium1 = Quiz.create(difficulty: "medium",question_count: 10, category: "History", title: "This probably belongs in a museum ... ", author_id: user1.id)
+history_quiz_hard1 = Quiz.create(difficulty: "hard", question_count: 10, category: "History", title: "This Belongs in a museum!!", author_id: user1.id)
 
 easy_array = Question.all.where(category: "History").where(difficulty: "easy")
 medium_array = Question.all.where(category: "History").where(difficulty: "medium")
@@ -704,9 +704,9 @@ nat_sci_hard_48 = Question.create(category: "Nature & Science", format: "multipl
 nat_sci_hard_49 = Question.create(category: "Nature & Science", format: "multiple", question: "In physics, conservation of energy and conservation of momentum are both consequences of which of the following?", correct_answer: "Noether&#039;s Theorem", difficulty: "hard", incorrect_answer_1: "Bell&#039;s Theorem", incorrect_answer_2: "Wick&#039;s Theorem", incorrect_answer_3: "Carnot&#039;s Theorem")
 
 
-nat_sci_quiz_easy1 = Quiz.create(question_count: 10, category: "Nature & Science", title: "Amateur Scienticians", author_id: user1.id) 
-nat_sci_quiz_medium1 = Quiz.create(question_count: 10, category: "Nature & Science", title: "Apprentice Scienticians", author_id: user1.id) 
-nat_sci_quiz_hard1 = Quiz.create(question_count: 10, category: "Nature & Science", title: "Most Smartest Scienticians", author_id: user1.id) 
+nat_sci_quiz_easy1 = Quiz.create(difficulty: "easy", question_count: 10, category: "Nature & Science", title: "Amateur Scienticians", author_id: user1.id) 
+nat_sci_quiz_medium1 = Quiz.create(difficulty: "medium", question_count: 10, category: "Nature & Science", title: "Apprentice Scienticians", author_id: user1.id) 
+nat_sci_quiz_hard1 = Quiz.create(difficulty: "hard", question_count: 10, category: "Nature & Science", title: "Most Smartest Scienticians", author_id: user1.id) 
 
 easy_array = Question.all.where(category: "Nature & Science").where(difficulty: "easy")
 medium_array = Question.all.where(category: "Nature & Science").where(difficulty: "medium")
@@ -895,9 +895,9 @@ music_hard_48 = Question.create(category: "Music", format: "multiple", question:
 music_hard_49 = Question.create(category: "Music", format: "multiple", question: "Panic! At the Disco&#039;s sixth album &quot;Pray For The Wicked&quot; was released on which date?", correct_answer: "June 22, 2018", difficulty: "hard", incorrect_answer_1: "May 9, 2018", incorrect_answer_2: "March 13, 2018", incorrect_answer_3: "February 21, 2018")
 
 
-music_quiz_easy1 = Quiz.create(question_count: 10, category: "Music", title: "Practicing your Scales", author_id: user1.id) 
-music_quiz_medium1 = Quiz.create(question_count: 10, category: "Music", title: "Time for a Solo", author_id: user1.id) 
-music_quiz_hard1 = Quiz.create(question_count: 10, category: "Music", title: "A Quiz for Conductors", author_id: user1.id) 
+music_quiz_easy1 = Quiz.create(difficulty: "easy", question_count: 10, category: "Music", title: "Practicing your Scales", author_id: user1.id) 
+music_quiz_medium1 = Quiz.create(difficulty: "medium", question_count: 10, category: "Music", title: "Time for a Solo", author_id: user1.id) 
+music_quiz_hard1 = Quiz.create(difficulty: "hard", question_count: 10, category: "Music", title: "A Quiz for Conductors", author_id: user1.id) 
 
 easy_array = Question.all.where(category: "Music").where(difficulty: "easy")
 medium_array = Question.all.where(category: "Music").where(difficulty: "medium")
@@ -1065,9 +1065,9 @@ film_hard_28 = Question.create(category: "Film", format: "multiple", question: "
 film_hard_29 = Question.create(category: "Film", format: "multiple", question: "Which singer is portrayed by Bruce Campbell in the 2002 film &#039;Bubba Ho-Tep&#039;?", correct_answer: "Elvis Presley", difficulty: "hard", incorrect_answer_1: "Johnny Cash", incorrect_answer_2: "Hank Williams, Sr.", incorrect_answer_3: "Buddy Holly")
 
 
-film_quiz_easy1 = Quiz.create(question_count: 10, category: "Film", title: "A Silver Screen Sampler", author_id: user1.id) 
-film_quiz_medium1 = Quiz.create(question_count: 10, category: "Film", title: "For the Popcorn Junkie", author_id: user1.id) 
-film_quiz_hard1 = Quiz.create(question_count: 10, category: "Film", title: "Are you a Quiz Auteur?", author_id: user1.id) 
+film_quiz_easy1 = Quiz.create(difficulty: "easy", question_count: 10, category: "Film", title: "A Silver Screen Sampler", author_id: user1.id) 
+film_quiz_medium1 = Quiz.create(difficulty: "medium", question_count: 10, category: "Film", title: "For the Popcorn Junkie", author_id: user1.id) 
+film_quiz_hard1 = Quiz.create(difficulty: "hard", question_count: 10, category: "Film", title: "Are you a Quiz Auteur?", author_id: user1.id) 
 
 easy_array = Question.all.where(category: "Film").where(difficulty: "easy")
 medium_array = Question.all.where(category: "Film").where(difficulty: "medium")
@@ -1086,7 +1086,7 @@ film_medium_8  = Question.create(category: "Film", format: "multiple", question:
 film_medium_9  = Question.create(category: "Film", format: "multiple", question: "After India, which country produces the second most movies per year?", correct_answer: "Nigeria", difficulty: "medium", incorrect_answer_1: "United States", incorrect_answer_2: "China", incorrect_answer_3: "France")
 film_medium_0  = Question.create(category: "Film", format: "multiple", question: "What is the name of the foley artist who designed the famous sounds of Star Wars, including Chewbacca&#039;s roar and R2-D2&#039;s beeps and whistles?", correct_answer: "Ben Burtt", difficulty: "medium", incorrect_answer_1: "Ken Burns", incorrect_answer_2: "Ralph McQuarrie", incorrect_answer_3: "Miranda Keyes")
 
-film_quiz_med = Quiz.create(question_count: 10, category: "Film", title: "Film quiz number 1", author_id: user1.id, description: "First film quiz!!")
+film_quiz_med = Quiz.create(difficulty: "medium", question_count: 10, category: "Film", title: "Film quiz number 1", author_id: user1.id, description: "First film quiz!!")
 
 QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_1.id,  weight: 1)
 QuizQuestion.create(quiz_id: film_quiz_med.id, question_id: film_medium_2.id,  weight: 1)

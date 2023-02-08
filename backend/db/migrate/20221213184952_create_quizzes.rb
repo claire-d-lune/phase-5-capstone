@@ -7,6 +7,7 @@ class CreateQuizzes < ActiveRecord::Migration[7.0]
       t.string :image_url
       t.integer :author_id 
       t.integer :question_count
+      t.string :difficulty
       
       t.timestamps
     end

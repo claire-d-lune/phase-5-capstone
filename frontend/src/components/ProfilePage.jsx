@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query'
 import AttemptRecordCard from "./AttemptRecordCard";
 import ImageCollection from "../assets/icons/ImageCollection";
+import QuizCard from './QuizCard'
 
 const ProfilePage = () => {
 
@@ -10,8 +11,12 @@ const ProfilePage = () => {
     const {data: userData} = useQuery(['currentUser'])
     const [myAttempts, setMyAttempts] = useState([])
 
+    //Button toggle to show attempt history: 
     const [attemptHistoryVisible, setAttemptHistoryVisible] = useState(false)
     const toggleDisplayHistory = () => setAttemptHistoryVisible(() => !attemptHistoryVisible)
+    //Similar toggle for display of created quizzes.
+    const[authoredVisible, setAuthoredVisible] = useState(false)
+    const toggleDisplayAuthored = () => setAuthoredVisible(!authoredVisible)
     
     let pointTotal = 0
     //Totalling the score from all attempts. 
@@ -31,7 +36,6 @@ const ProfilePage = () => {
     //Create a card to represent each attempt: 
     const attemptStack = myAttempts.map((attempt, index) => {
         let quiz = quizData.find(n => n.id == attempt.quiz.id)
-        console.log(quiz)
         return <AttemptRecordCard 
                 key={`${userData.username}_attempt_${index}`}
                 user={attempt.user}
@@ -39,7 +43,10 @@ const ProfilePage = () => {
                 score={attempt.score}/>
     })
 
-    console.log(quizData)
+
+    //Find the quizzes where the author matches the user id: 
+    
+    console.log(userData)
 
     return (
         <>
@@ -117,6 +124,7 @@ const ProfilePage = () => {
                         Mi quis hendrerit dolor magna eget est lorem. Amet luctus venenatis lectus magna. Congue nisi vitae suscipit tellus mauris. Viverra nam libero justo laoreet. Tempus egestas sed sed risus pretium quam. Cras sed felis eget velit aliquet. Nisl pretium fusce id velit ut tortor. Justo eget magna fermentum iaculis eu non diam phasellus vestibulum. Nisl pretium fusce id velit ut tortor. At quis risus sed vulputate odio ut. Sapien eget mi proin sed libero enim. 
                         </p>
                         <p onClick={toggleDisplayHistory} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500">Show attempt history </p>
+                        <p onClick={toggleDisplayAuthored} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500"> My Quizzes </p>
                     </div>
                     </div>
                 </div>
