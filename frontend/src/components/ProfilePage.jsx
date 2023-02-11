@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query'
 import AttemptRecordCard from "./AttemptRecordCard";
 import ImageCollection from "../assets/icons/ImageCollection";
-import QuizCard from './QuizCard'
+import AuthoredQuizCard from './AuthoredQuizCard'
 
 const ProfilePage = () => {
 
@@ -12,15 +12,13 @@ const ProfilePage = () => {
     const [myAttempts, setMyAttempts] = useState([])
 
     //Button toggle to show attempt history: 
-    const [attemptHistoryVisible, setAttemptHistoryVisible] = useState(false)
-    const toggleDisplayHistory = () => setAttemptHistoryVisible(() => !attemptHistoryVisible)
-    //Similar toggle for display of created quizzes.
-    const[authoredVisible, setAuthoredVisible] = useState(false)
-    const toggleDisplayAuthored = () => setAuthoredVisible(!authoredVisible)
+    const [detailVisible, setDetailVisible] = useState({attemptHistory: false, authoredHistory: false})
+    const toggleAttemptDisplay = () => setDetailVisible({attemptHistory: !detailVisible.attemptHistory, authoredHistory: false})
+    const toggleAuthoredDisplay = () => setDetailVisible({attemptHistory: false, authoredHistory: !detailVisible.authoredHistory})
     
     let pointTotal = 0
     //Totalling the score from all attempts. 
-    userData?.attempts.forEach((attempt) => {
+    userData.attempts.forEach((attempt) => {
         pointTotal = pointTotal + attempt.score
     })
 
@@ -43,10 +41,12 @@ const ProfilePage = () => {
                 score={attempt.score}/>
     })
 
-
     //Find the quizzes where the author matches the user id: 
-    
-    console.log(userData)
+    const authoredStack = userData.quizzes.map(q => {
+    return <AuthoredQuizCard key={`${userData.username} ${q.title}`} quiz={q} author={userData}/> 
+    })
+   
+    console.log(authoredStack)
 
     return (
         <>
@@ -123,15 +123,16 @@ const ProfilePage = () => {
                         <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                         Mi quis hendrerit dolor magna eget est lorem. Amet luctus venenatis lectus magna. Congue nisi vitae suscipit tellus mauris. Viverra nam libero justo laoreet. Tempus egestas sed sed risus pretium quam. Cras sed felis eget velit aliquet. Nisl pretium fusce id velit ut tortor. Justo eget magna fermentum iaculis eu non diam phasellus vestibulum. Nisl pretium fusce id velit ut tortor. At quis risus sed vulputate odio ut. Sapien eget mi proin sed libero enim. 
                         </p>
-                        <p onClick={toggleDisplayHistory} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500">Show attempt history </p>
-                        <p onClick={toggleDisplayAuthored} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500"> My Quizzes </p>
+                        <p onClick={toggleAttemptDisplay} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500 mx-5">Show attempt history </p>
+                        <p onClick={toggleAuthoredDisplay} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500 mx-5"> My Quizzes </p>
                     </div>
                     </div>
                 </div>
                 </div>
             </div>
             </div>
-            {attemptHistoryVisible ? <div>{attemptStack}</div> : null}
+            {detailVisible.attemptHistory ? <div>{attemptStack}</div> : null}
+            {detailVisible.authoredHistory ? <div>{authoredStack}</div>: null}
         </section>
         </>)
 }

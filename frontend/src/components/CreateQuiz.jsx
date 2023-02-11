@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from 'react-router-dom';
 import NewQuestionBox from "./NewQuestionBox";
 import axios from "axios";
 
@@ -70,6 +71,7 @@ const CreateQuiz = () => {
     }, [questionArray]);
 
     // Submit function for the quiz itself: 
+    const navigate = useNavigate()
     const submitQuiz = () => {
         //filtering for filled entries to confirm every question has been filled in. 
         let postQuestions = questionArray.filter(n => n)
@@ -90,7 +92,7 @@ const CreateQuiz = () => {
                     .then(res => console.log(res.data))
                 })
             })
-        })
+        }).then(() => navigate("/profile"))
     }
     
     console.log(quizSettings)

@@ -27,6 +27,12 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    #this method is intended to return an index of users ranked by score. 
+    def ranked_index
+        result = User.all.sort_by {|u| u.score}
+        render json: result, status: :ok
+    end
+
     private
 
     def user_params 

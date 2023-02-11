@@ -43,6 +43,7 @@ class QuizzesController < ApplicationController
             :title,
             :description,
             :image_url,
-            :author_id)
+            :author_id,
+            :difficulty)
     end
 end

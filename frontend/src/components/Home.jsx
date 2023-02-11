@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Home = () => {
    
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ["quizzes"], 
         refetchOnWindowFocus: false
     })
@@ -57,6 +57,9 @@ const Home = () => {
         return <QuizCard key={quiz.id} quiz={quiz}/>
     })
     // Rendered elements here:
+
+    isLoading ? <p> Content is loading... </p> : null
+
     return(
         <div>
             {/* Search */}

@@ -39,8 +39,7 @@ const Signup = ({setCurrentUser}) => {
         newForm[e.target.id] = e.target.value
         setFormData(newForm)
     }
-    console.log(formData)
-    
+
     //Setting up a navigate function to redirect after succesful sign up
     const navigate = useNavigate() 
     const handleNewSignup = (e) => {
