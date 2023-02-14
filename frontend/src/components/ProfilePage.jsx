@@ -38,15 +38,17 @@ const ProfilePage = () => {
                 key={`${userData.username}_attempt_${index}`}
                 user={attempt.user}
                 quiz={quiz}
-                score={attempt.score}/>
+                score={attempt.score}
+                date={attempt.created_at}/>
     })
+    //Reverse the order of attempts to show most recent on top. 
+    attemptStack.reverse()
 
     //Find the quizzes where the author matches the user id: 
     const authoredStack = userData.quizzes.map(q => {
     return <AuthoredQuizCard key={`${userData.username} ${q.title}`} quiz={q} author={userData}/> 
     })
-   
-    console.log(authoredStack)
+    authoredStack.reverse()
 
     return (
         <>
@@ -131,8 +133,10 @@ const ProfilePage = () => {
                 </div>
             </div>
             </div>
-            {detailVisible.attemptHistory ? <div>{attemptStack}</div> : null}
-            {detailVisible.authoredHistory ? <div>{authoredStack}</div>: null}
+            <div class="relative inset-x-52 w-3/4">
+                {detailVisible.attemptHistory ? <div>{attemptStack}</div> : null}
+                {detailVisible.authoredHistory ? <div>{authoredStack}</div>: null}
+            </div>
         </section>
         </>)
 }

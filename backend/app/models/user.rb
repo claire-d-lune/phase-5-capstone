@@ -13,4 +13,12 @@ class User < ApplicationRecord
         total
     end
 
+    def points_attempted
+        total = 0 
+        self.attempts.each do |t|
+            total += t.Quiz.questions.length
+        end
+        total
+    end
+
 end

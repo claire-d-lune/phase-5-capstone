@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Home = () => {
    
-    const { data, isLoading } = useQuery({
+    const {  data, isLoading, isError} = useQuery({
         queryKey: ["quizzes"], 
         refetchOnWindowFocus: false
     })
@@ -16,13 +16,9 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState("")
 
     //Filter-style search by title
-    const handleSearchForm = (e) => {
-        setSearchTerm(e.target.value)
-    }
+    const handleSearchForm = (e) => setSearchTerm(e.target.value)
 
-    const handleCategorySelect = (e) => {
-        setCategory(e.target.id.toLowerCase())
-    }
+    const handleCategorySelect = (e) => setCategory(e.target.id.toLowerCase())
 
     const handleDifficultySelect = (e) => {
         let newSelection = {...selectedDifficulty}
@@ -56,9 +52,15 @@ const Home = () => {
     let quizCards = quizList?.map((quiz) => {
         return <QuizCard key={quiz.id} quiz={quiz}/>
     })
-    // Rendered elements here:
 
-    isLoading ? <p> Content is loading... </p> : null
+    // Rendered elements here:
+    if(isLoading) {
+        return <p> Content is loading... </p>
+    }
+
+    if(isError) {
+        return <p> Error loading content. </p>
+    }
 
     return(
         <div>

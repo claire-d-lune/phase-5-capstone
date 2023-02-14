@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import NewQuestionBox from "./NewQuestionBox";
 import axios from "axios";
 
@@ -10,8 +10,6 @@ const CreateQuiz = () => {
     const {data: userData} = useQuery(['currentUser'])
     const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", length: 10 , category: "", title: "", description: "",  image_url: "", author_id: userData.id})
     const [difficultyNum, setDifficultyNum] = useState(1)
-    
-    console.log(quizSettings)
     
     //Event handlers for forms. 
     const handleSlider = (e) => {   
@@ -71,7 +69,8 @@ const CreateQuiz = () => {
     }, [questionArray]);
 
     // Submit function for the quiz itself: 
-    const navigate = useNavigate()
+    // One final use of state to render different buttons after the quiz has been succesfully created
+    const [quizSubmitted, setQuizSubmitted] = useState(false)
     const submitQuiz = () => {
         //filtering for filled entries to confirm every question has been filled in. 
         let postQuestions = questionArray.filter(n => n)
@@ -92,7 +91,7 @@ const CreateQuiz = () => {
                     .then(res => console.log(res.data))
                 })
             })
-        }).then(() => navigate("/profile"))
+        }).then(() => setQuizSubmitted(true))
     }
     
     console.log(quizSettings)
@@ -160,7 +159,12 @@ const CreateQuiz = () => {
         :   // If the stack *has* been populated (this takes place after options are submitted), then I will instead render the stack of forms and a button to submit the quiz. 
         <div className="grid grid-cols-1 w-1/2 relative left-1/4">
             {questionFormStack}
-            <button onClick={submitQuiz} className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>
+            {quizSubmitted ? 
+                <>
+                <Link to='/home' className="btn btn-secondary justify-center">Return Home</Link>
+                <Link to='/profile'  className="btn btn-secondary justify-center">Go To Profile</Link>
+                </> : 
+                <button onClick={submitQuiz} className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>}
         </div>
     )
 
