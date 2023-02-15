@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show_current'
   get '/leaderboard', to: 'users#ranked_index'
+
+  get '/random_selection', to: 'questions#random_selection'
   # Defines the root path route ("/")
   # root "articles#index"
 end

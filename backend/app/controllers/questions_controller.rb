@@ -9,10 +9,17 @@ class QuestionsController < ApplicationController
         render json: question, status: :created
     end
 
+    def random_selection
+        response = Question.all.where(category: question_params['category'], difficulty: question_params['difficulty'])
+        response = response.sample(question_params['count'])  #taking a random selection of those questions which match our criteria. 
+        render json: response, status: :ok
+    end
+
     private 
 
     def question_params 
         params.permit(
+            :count,
             :category,
             :format,
             :difficulty,

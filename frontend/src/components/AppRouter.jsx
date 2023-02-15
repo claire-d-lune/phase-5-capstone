@@ -14,6 +14,7 @@ import Seedmaker from './dev_components/Seedmaker';
 import axios from 'axios';
 import ProfilePage from "./ProfilePage";
 import CreateQuiz from "./CreateQuiz";
+import RandomQuizGenerator from "./RandomQuizGenerator";
 
 const AppRouter = () => {
 
@@ -74,6 +75,7 @@ const AppRouter = () => {
                 <Route path = "/leaderboard" element={<Leaderboard/>}/>
                 <Route path = "/profile" element ={<ProfilePage/>}/>
                 <Route path = "/create_quiz" element ={<CreateQuiz />}/>
+                <Route path = "/randomizer" element = {<RandomQuizGenerator user={currentUser}/>}/>
               </Routes>
             </> }
 }

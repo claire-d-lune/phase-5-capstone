@@ -26,6 +26,7 @@ const Navbar = ({user, setCurrentUser}) => {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/leaderboard">Leaderboards</Link></li>
               <li><Link to="/create_quiz">Create a Custom Quiz</Link></li>
+              <li><Link to="/randomizer">Randomizer</Link></li>
             </ul>
           </div>
         </div>
