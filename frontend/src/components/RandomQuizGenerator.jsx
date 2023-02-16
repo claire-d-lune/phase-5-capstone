@@ -1,12 +1,13 @@
 import React, {useState} from "react";
+import axios from "axios";
+import RandomQuizPage from "./RandomQuizDisplay";
 
 
 const RandomQuizGenerator = ({user}) => {
 
-    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", length: 10 , category: "", title: "", description: "",  image_url: "", author_id: ""})
+    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", count: 20 , category: ""})
     const [difficultyNum, setDifficultyNum] = useState(1)
-    const [optionsSubmitted, setOptionsSubmitted] = useState(false)
-    
+  
     //Event handlers for forms. 
     const handleSlider = (e) => {   
         let newSettings = {...quizSettings}
@@ -21,7 +22,7 @@ const RandomQuizGenerator = ({user}) => {
             case 3: setDifficultyNum(selection)
                 newSettings.difficulty = 'Hard'; 
             break
-            default: newSettings.length = selection
+            default: newSettings.count = selection
         }
         setQuizSettings(newSettings)
     } 
@@ -32,12 +33,21 @@ const RandomQuizGenerator = ({user}) => {
         setQuizSettings(newSettings)
     }
 
+    // const {data: selectionData} = useQuery({queryKey: ['randomQuestions'] })
+    const [questionDisplay, createQuestionDisplay] = useState(false)
     const handleOptionSubmit = () => {
-        setOptionsSubmitted(true)
+        axios.get("/api/random_selection", {params: {...quizSettings}}).then(res => res.data)
+        .then(data => createQuestionDisplay(() => 
+        <RandomQuizPage key={`random_quiz_${user.username}`} questions={data} category={quizSettings.category} difficulty={quizSettings.difficulty}/>))
     }
+
+    console.log(quizSettings)
 
     return (
         <div>
+            
+            {questionDisplay ? questionDisplay ://I'm considering rewriting this line to be a little bit less confusing. I don't want to display the questions until they have been selected. 
+            <>
             <div className="grid grid-cols-1 w-1/2 relative left-1/4">
                 <span className="text-white relative justify-self-center text-l py-5"></span>
             </div>
@@ -89,7 +99,8 @@ const RandomQuizGenerator = ({user}) => {
                 </div>
                 <div className="divider"></div>
                 <button onClick={handleOptionSubmit} className="btn btn-primary my-2 self-center"> Take a Random Quiz: </button>
-            </div> 
+            </div>
+            </>}
         </div>
     )
 }

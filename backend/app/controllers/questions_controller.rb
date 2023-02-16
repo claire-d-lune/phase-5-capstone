@@ -10,8 +10,7 @@ class QuestionsController < ApplicationController
     end
 
     def random_selection
-        response = Question.all.where(category: question_params['category'], difficulty: question_params['difficulty'])
-        response = response.sample(question_params['count'])  #taking a random selection of those questions which match our criteria. 
+        response = Question.all.where(category: question_params['category'], difficulty: question_params['difficulty']).order('random()').limit(question_params['count'])
         render json: response, status: :ok
     end
 
