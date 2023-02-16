@@ -5,8 +5,7 @@ import ImageCollection from "../assets/icons/ImageCollection";
 
 const Leaderboard = () => {
 
-    const { data: attemptData, isLoading } = useQuery(["attempts"])
-    const { data: leaderboard } = useQuery({
+    const { data: leaderboard, isLoading } = useQuery({
         queryKey: ['leaderboard'], 
         queryFn: () => axios("/api/leaderboard").then(res => res.data)
     })
