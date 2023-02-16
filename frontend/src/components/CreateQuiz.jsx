@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate, Link } from 'react-router-dom';
 import NewQuestionBox from "./NewQuestionBox";
 import axios from "axios";
 
 
 const CreateQuiz = () => {
 
-    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", questionCount: 10 , category: "", title: "", description: "",  image_url: ""})
-    const [difficultyNum, setDifficultyNum] = useState(1)
     const {data: userData} = useQuery(['currentUser'])
+    const [quizSettings, setQuizSettings] = useState({difficulty: "Easy", length: 10 , category: "", title: "", description: "",  image_url: "", author_id: userData.id})
+    const [difficultyNum, setDifficultyNum] = useState(1)
     
     //Event handlers for forms. 
     const handleSlider = (e) => {   
@@ -24,7 +25,7 @@ const CreateQuiz = () => {
             case 3: setDifficultyNum(selection)
                 newSettings.difficulty = 'Hard'; 
             break
-            default: newSettings.questionCount = selection
+            default: newSettings.length = selection
         }
         setQuizSettings(newSettings)
     } 
@@ -50,8 +51,7 @@ const CreateQuiz = () => {
         if((quizSettings.category === "") || (quizSettings.title === "")) alert("You must fill out the title and category to proceed.")
         else {
             //creating an array of equal length to the question count, to return one for each
-            let blankQuestionArray = [...Array(quizSettings.questionCount)]
-            console.log(blankQuestionArray)
+            let blankQuestionArray = [...Array(quizSettings.length)]
             setQuestionArray(blankQuestionArray)
         }
     } 
@@ -69,6 +69,8 @@ const CreateQuiz = () => {
     }, [questionArray]);
 
     // Submit function for the quiz itself: 
+    // One final use of state to render different buttons after the quiz has been succesfully created
+    const [quizSubmitted, setQuizSubmitted] = useState(false)
     const submitQuiz = () => {
         //filtering for filled entries to confirm every question has been filled in. 
         let postQuestions = questionArray.filter(n => n)
@@ -76,13 +78,7 @@ const CreateQuiz = () => {
             alert('You must fill out each question for proceed')
             return
         } 
-        axios.post('/api/quizzes', {
-            author_id: userData.id,
-            title: quizSettings.title,
-            category: quizSettings.category,
-            description: quizSettings.description,
-            image_url: quizSettings.image_url
-        })
+        axios.post('/api/quizzes', {...quizSettings})
         .then((res) => {
             let quizId = res.data.id
             postQuestions.forEach((question) => {
@@ -95,12 +91,12 @@ const CreateQuiz = () => {
                     .then(res => console.log(res.data))
                 })
             })
-        })
+        }).then(() => setQuizSubmitted(true))
     }
-     
+    
+    console.log(quizSettings)
     return (
         // If the question stack has not been populated I will display an options form
-        // If the stack *has* been populated (this takes place after options are submitted), then I will instead render the stack of forms and a button to submit the quiz. 
         questionFormStack.length === 0 ? 
         <div>
             <div className="grid grid-cols-1 w-1/2 relative left-1/4">
@@ -146,7 +142,7 @@ const CreateQuiz = () => {
                 <div className="divider"></div> {/* Question Count Slider:  */}
                 <div className="w-2/3 text-center self-center">
                     <label>Select Number of Questions: </label>
-                    <input onChange={handleSlider} value={quizSettings.questionCount} type="range" min="5" max="30" className="range" step="5" />
+                    <input onChange={handleSlider} value={quizSettings.length} type="range" min="5" max="30" className="range" step="5" />
                     <div className="w-full flex justify-between text-xs px-2">
                         <span>5</span>
                         <span>10</span>
@@ -160,10 +156,15 @@ const CreateQuiz = () => {
                 <button onClick={handleOptionSubmit} className="btn btn-primary my-2 self-center"> Create Your Form: </button>
             </div> 
         </div>
-        :
+        :   // If the stack *has* been populated (this takes place after options are submitted), then I will instead render the stack of forms and a button to submit the quiz. 
         <div className="grid grid-cols-1 w-1/2 relative left-1/4">
             {questionFormStack}
-            <button onClick={submitQuiz} className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>
+            {quizSubmitted ? 
+                <>
+                <Link to='/home' className="btn btn-secondary justify-center">Return Home</Link>
+                <Link to='/profile'  className="btn btn-secondary justify-center">Go To Profile</Link>
+                </> : 
+                <button onClick={submitQuiz} className="btn btn-secondary self-center mb-5"> Submit Your Quiz: </button>}
         </div>
     )
 

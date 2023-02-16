@@ -9,10 +9,16 @@ class QuestionsController < ApplicationController
         render json: question, status: :created
     end
 
+    def random_selection
+        response = Question.all.where(category: question_params['category'], difficulty: question_params['difficulty']).order('random()').limit(question_params['count'])
+        render json: response, status: :ok
+    end
+
     private 
 
     def question_params 
         params.permit(
+            :count,
             :category,
             :format,
             :difficulty,

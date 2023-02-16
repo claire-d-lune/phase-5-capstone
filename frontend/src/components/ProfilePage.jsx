@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query'
 import AttemptRecordCard from "./AttemptRecordCard";
 import ImageCollection from "../assets/icons/ImageCollection";
+import AuthoredQuizCard from './AuthoredQuizCard'
 
 const ProfilePage = () => {
 
@@ -10,14 +11,14 @@ const ProfilePage = () => {
     const {data: userData} = useQuery(['currentUser'])
     const [myAttempts, setMyAttempts] = useState([])
 
-    const [attemptHistoryVisible, setAttemptHistoryVisible] = useState(false)
-    const toggleDisplayHistory = () => setAttemptHistoryVisible(() => !attemptHistoryVisible)
-    
-    
+    //Button toggle to show attempt history: 
+    const [detailVisible, setDetailVisible] = useState({attemptHistory: false, authoredHistory: false})
+    const toggleAttemptDisplay = () => setDetailVisible({attemptHistory: !detailVisible.attemptHistory, authoredHistory: false})
+    const toggleAuthoredDisplay = () => setDetailVisible({attemptHistory: false, authoredHistory: !detailVisible.authoredHistory})
     
     let pointTotal = 0
     //Totalling the score from all attempts. 
-    userData?.attempts.forEach((attempt) => {
+    userData.attempts.forEach((attempt) => {
         pointTotal = pointTotal + attempt.score
     })
 
@@ -33,15 +34,21 @@ const ProfilePage = () => {
     //Create a card to represent each attempt: 
     const attemptStack = myAttempts.map((attempt, index) => {
         let quiz = quizData.find(n => n.id == attempt.quiz.id)
-        console.log(quiz)
         return <AttemptRecordCard 
                 key={`${userData.username}_attempt_${index}`}
                 user={attempt.user}
                 quiz={quiz}
-                score={attempt.score}/>
+                score={attempt.score}
+                date={attempt.created_at}/>
     })
+    //Reverse the order of attempts to show most recent on top. 
+    attemptStack.reverse()
 
-    console.log(quizData)
+    //Find the quizzes where the author matches the user id: 
+    const authoredStack = userData.quizzes.map(q => {
+    return <AuthoredQuizCard key={`${userData.username} ${q.title}`} quiz={q} author={userData}/> 
+    })
+    authoredStack.reverse()
 
     return (
         <>
@@ -118,14 +125,18 @@ const ProfilePage = () => {
                         <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                         Mi quis hendrerit dolor magna eget est lorem. Amet luctus venenatis lectus magna. Congue nisi vitae suscipit tellus mauris. Viverra nam libero justo laoreet. Tempus egestas sed sed risus pretium quam. Cras sed felis eget velit aliquet. Nisl pretium fusce id velit ut tortor. Justo eget magna fermentum iaculis eu non diam phasellus vestibulum. Nisl pretium fusce id velit ut tortor. At quis risus sed vulputate odio ut. Sapien eget mi proin sed libero enim. 
                         </p>
-                        <p onClick={toggleDisplayHistory} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500">Show attempt history </p>
+                        <p onClick={toggleAttemptDisplay} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500 mx-5">Show attempt history </p>
+                        <p onClick={toggleAuthoredDisplay} className="font-normal btn btn-outline hover:bg-emerald-100 text-pink-500 mx-5"> My Quizzes </p>
                     </div>
                     </div>
                 </div>
                 </div>
             </div>
             </div>
-            {attemptHistoryVisible ? <div>{attemptStack}</div> : null}
+            <div class="relative inset-x-52 w-3/4">
+                {detailVisible.attemptHistory ? <div>{attemptStack}</div> : null}
+                {detailVisible.authoredHistory ? <div>{authoredStack}</div>: null}
+            </div>
         </section>
         </>)
 }

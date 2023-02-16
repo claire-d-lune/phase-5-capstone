@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//To render avatars, etc. :
 import ImageCollection from "../assets/icons/ImageCollection";
 
-const QuizCard = ({quiz}) => {
+const AuthoredQuizCard = ({quiz, author}) => {
 
     let categoryImages = {
         film: 'https://d3rg18dos0rgue.cloudfront.net/wp-content/uploads/sites/9/2022/05/About-Section-right-image-Roxy-Cinema-Website_2000x2000-copy.jpg',
@@ -25,7 +24,7 @@ const QuizCard = ({quiz}) => {
         default : displayImage = categoryImages.default;
         // I am storing the original default link here in this comment, in case I end up preffering it as a default "https://placeimg.com/400/400/arch"
     }
-    
+
     return (
         <div className="card md:card-side bg-secondary shadow-xl my-8 max-h-80">
             <figure className="w-1/2"><img src={displayImage} alt="Album"/></figure>
@@ -41,11 +40,11 @@ const QuizCard = ({quiz}) => {
                     <div className=" text-center content-center h-full relative -left-8">
                         <div className='divider divider-horizontal'/>
                         <p className='relative text-center'>created by:</p>
-                        <p className='text text-primary'>{quiz.author.username}</p>
+                        <p className='text text-primary'>{author.username}</p>
                     </div>
                     <label className="btn btn-ghost btn-circle btn-xl avatar relative left-10">
                             <div className="w-10 rounded-full bg-white">
-                                <img src={ImageCollection[`${quiz.author.image_url}`]} alt="User Image" />
+                                <img src={ImageCollection[`${author.image_url}`]} alt="User Image" />
                             </div>
                     </label> 
                 </div>
@@ -59,4 +58,4 @@ const QuizCard = ({quiz}) => {
     )
 }
 
-export default QuizCard
+export default AuthoredQuizCard

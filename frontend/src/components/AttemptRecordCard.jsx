@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ImageCollection from "../assets/icons/ImageCollection";
 
-const AttemptRecordCard = ({user, quiz, score}) => {
+const AttemptRecordCard = ({user, quiz, score, date}) => {
     
-    console.log(quiz)
-
+    const takenOn = new Date(date)
+    
     return (
         <div className="card md:card-side bg-secondary shadow-xl my-8 max-h-80">
             <figure className="w-1/2"><img src='https://static.vecteezy.com/system/resources/previews/003/206/208/original/quiz-time-neon-signs-style-text-free-vector.jpg' alt="Album"/></figure>
@@ -33,7 +33,11 @@ const AttemptRecordCard = ({user, quiz, score}) => {
                 <div className="grid grid-cols-2 text-neutral-content">
                     <div>
                         <span>Your score: </span>
-                        <span className="text text-3xl text-green-500 pl-6" >{score}</span>
+                        <span className="text text-3xl text-green-500 pl-6" >{score}/{quiz.question_count}</span>
+                        <div>
+                            <p>Attempted on: </p>
+                            <p>{takenOn.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})} @ {takenOn.toLocaleTimeString('en-US')}</p>
+                        </div>
                         <div className="card-actions my-4">
                         <Link to={`/quizpage/${quiz.id}`} className="btn btn-primary btn-md relative left-1/3">Try Again? </Link>
                         </div>
