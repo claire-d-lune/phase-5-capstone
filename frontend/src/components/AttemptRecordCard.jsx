@@ -46,7 +46,7 @@ const AttemptRecordCard = ({user, quiz, score, date}) => {
                     
                     <div>
                         <label className="label underline pt-0">Author's Description:</label>                    
-                        <p className="w-5/6">{quiz.description}</p>
+                        <p className="w-5/6 overflow-y-scroll">{quiz.description}</p>
                     </div>
                     
                 </div>
