@@ -2,8 +2,6 @@ import React from "react";
 
 const QuestionResults = ({question, number, isCorrect}) => {
 
-    console.log(isCorrect)
-
     return isCorrect ? 
                 <div className="card w-4/5 place-self-center bg-green-400 text-content my-4">
                     <div className="card-body items-center text-left pt-4">

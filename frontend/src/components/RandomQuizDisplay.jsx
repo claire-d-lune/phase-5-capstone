@@ -32,6 +32,7 @@ const RandomQuizDisplay = ({questions, difficulty, category}) => {
         // axios.post("/api/attempts", {quiz_id: id, user_id: userData.id, score: results}).then(res => console.log(res.data))
         setFinalResults([...quizResults])
         setScore(results)
+        window.scrollTo(0, 0)
     }
 
     questionNumber = 0
