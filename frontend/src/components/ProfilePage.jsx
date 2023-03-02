@@ -7,7 +7,7 @@ import AuthoredQuizCard from './AuthoredQuizCard'
 const ProfilePage = () => {
 
     const {data: quizData} = useQuery(['quizzes'])
-    const {data: attemptData } = useQuery({queryKey: ['attempts'],refetchOnWindowFocus: false})
+    const {data: attemptData } = useQuery({queryKey: ['attempts'], refetchOnWindowFocus: false})
     const {data: userData} = useQuery(['currentUser'])
     const [myAttempts, setMyAttempts] = useState([])
 
